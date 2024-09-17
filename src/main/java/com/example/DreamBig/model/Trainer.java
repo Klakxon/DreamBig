@@ -7,10 +7,10 @@ public class Trainer extends User {
 
     public Trainer(Long id, String fullName, String phoneNumber, String email, String password, String role, List<Session> schedule) {
         super(id, fullName, phoneNumber, email, password, role);
-        if (!isTrainerRole(role)) {
+        if (!"TRAINER".equalsIgnoreCase(role)) {
             throw new IllegalArgumentException("Role must be 'TRAINER' for this class");
         }
-        this.schedule = schedule;
+        this.schedule = schedule != null ? schedule : new java.util.ArrayList<>();
     }
 
     public List<Session> getSchedule() {
@@ -37,12 +37,9 @@ public class Trainer extends User {
         if (!isAvailable(dateTime)) {
             throw new IllegalStateException("Trainer is not available at this time");
         }
-        Session newSession = new Session(null, sessionType, dateTime, this, List.of(user));
+        Session newSession = new Session(null, sessionType, dateTime, this);
+        newSession.addParticipant(user);
         schedule.add(newSession);
-    }
-
-    private boolean isTrainerRole(String role) {
-        return "TRAINER".equalsIgnoreCase(role);
     }
 
     public void cancelSession(String dateTime) {
