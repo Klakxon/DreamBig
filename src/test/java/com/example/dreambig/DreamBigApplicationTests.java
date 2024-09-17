@@ -1,4 +1,4 @@
-package com.example.DreamBig;
+package com.example.dreambig;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

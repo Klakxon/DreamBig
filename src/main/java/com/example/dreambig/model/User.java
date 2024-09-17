@@ -1,8 +1,11 @@
-package com.example.DreamBig.model;
+package com.example.dreambig.model;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.example.dreambig.service.implementations.ValidationServiceImpl;
+import com.example.dreambig.service.interfaces.ValidationService;
 
+/**
+ * Батьківський клас, який описує звичайного користувача.
+ */
 public class User {
     private Long id;
     private String fullName;
@@ -11,11 +14,13 @@ public class User {
     private String password;
     private String role; // "USER", "TRAINER", "ADMIN"
 
+    private ValidationService validationService;
+
     public User(Long id, String fullName, String phoneNumber, String email, String password, String role) {
-        if (!isValidPhoneNumber(phoneNumber)) {
+        if (!validationService.isValidPhoneNumber(phoneNumber)) {
             throw new IllegalArgumentException("Invalid phone number format");
         }
-        if (!isValidEmail(email)) {
+        if (!validationService.isValidEmail(email)) {
             throw new IllegalArgumentException("Invalid email format");
         }
         if (password == null || password.length() < 8) {
@@ -28,6 +33,8 @@ public class User {
         this.email = email;
         this.password = password;
         this.role = role;
+
+        this.validationService = new ValidationServiceImpl();
     }
 
     public Long getId() {
@@ -54,7 +61,7 @@ public class User {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        if (!isValidPhoneNumber(phoneNumber)) {
+        if (!validationService.isValidPhoneNumber(phoneNumber)) {
             throw new IllegalArgumentException("Invalid phone number format");
         }
         this.phoneNumber = phoneNumber;
@@ -65,7 +72,7 @@ public class User {
     }
 
     public void setEmail(String email) {
-        if (!isValidEmail(email)) {
+        if (!validationService.isValidEmail(email)) {
             throw new IllegalArgumentException("Invalid email format");
         }
         this.email = email;
@@ -91,35 +98,5 @@ public class User {
             throw new IllegalArgumentException("Role cannot be empty");
         }
         this.role = role;
-    }
-
-    public boolean isValidPhoneNumber(String phoneNumber) {
-        String phonePattern = "\\+?\\d{10,13}";
-        Pattern pattern = Pattern.compile(phonePattern);
-        Matcher matcher = pattern.matcher(phoneNumber);
-        return matcher.matches();
-    }
-
-    public boolean isValidEmail(String email) {
-        String emailPattern = "^[A-Za-z0-9+_.-]+@(.+)$";
-        Pattern pattern = Pattern.compile(emailPattern);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
-    }
-
-    public boolean checkPassword(String passwordInput) {
-        return this.password.equals(passwordInput);
-    }
-
-    public boolean isAdmin() {
-        return "ADMIN".equalsIgnoreCase(this.role);
-    }
-
-    public boolean isTrainer() {
-        return "TRAINER".equalsIgnoreCase(this.role);
-    }
-
-    public boolean isUser() {
-        return "USER".equalsIgnoreCase(this.role);
     }
 }
