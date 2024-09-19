@@ -15,7 +15,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     public boolean isValidFor(Subscription subscription, String sessionType) {
-        // Простий приклад: перевіряємо, чи відповідає тип абонемента типу тренування
+
         String type = subscription.getType();
         return type.equalsIgnoreCase(sessionType) || "Unlimited".equalsIgnoreCase(type);
     }

@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Session {
     private Long id;
-    private String sessionType; // Наприклад, "Group" або "Individual"
+    private String sessionType;
     private String dateTime;
     private Trainer trainer;
     private List<User> participants;

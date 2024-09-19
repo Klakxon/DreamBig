@@ -5,7 +5,7 @@ package com.example.DreamBig.model;
  */
 public class Subscription {
     private Long id;
-    private String type; // Наприклад, "Monthly", "Yearly", "One-time"
+    private String type;
     private boolean isActive;
     private User user;
 

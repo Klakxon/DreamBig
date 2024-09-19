@@ -6,7 +6,7 @@ package com.example.DreamBig.model;
 public class Payment {
     private Long id;
     private Double amount;
-    private String status; // "Pending", "Completed"
+    private String status;
     private User user;
     private String date;
 

@@ -10,7 +10,7 @@ public class FeedbackRequest {
     private Long id;
     private String phoneNumber;
     private String message;
-    private String status; // Наприклад, "New", "Processed"
+    private String status;
 
     private final ValidationService validationService;
 

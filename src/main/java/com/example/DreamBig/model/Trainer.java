@@ -8,7 +8,7 @@ import java.util.List;
  * Клас, який описує тренера в спортивному клубі.
  */
 public class Trainer extends User {
-    private List<Session> schedule; // Розклад тренувань тренера
+    private List<Session> schedule;
 
     public Trainer(Long id, String fullName, String phoneNumber, String email, String password, List<Session> schedule) {
         super(id, fullName, phoneNumber, email, password, Roles.TRAINER.toString());

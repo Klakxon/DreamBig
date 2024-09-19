@@ -12,7 +12,7 @@ public class User {
     private String phoneNumber;
     private String email;
     private String password;
-    private String role; // "USER", "TRAINER", "ADMIN"
+    private String role;
 
     private ValidationService validationService;
 

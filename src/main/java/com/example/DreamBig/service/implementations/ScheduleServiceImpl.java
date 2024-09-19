@@ -43,9 +43,9 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     public boolean isFullyBooked(Schedule schedule) {
-        // You could add logic here to determine if all available session spots are booked
+
         for (Session session : schedule.getSessions()) {
-            if (session.getParticipants().size() < 10) { // Example: a session can have up to 10 participants
+            if (session.getParticipants().size() < 10) {
                 return false;
             }
         }
