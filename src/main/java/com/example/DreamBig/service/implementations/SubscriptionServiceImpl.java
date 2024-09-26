@@ -1,22 +1,41 @@
 package com.example.DreamBig.service.implementations;
 
-import com.example.DreamBig.model.Subscription;
+import com.example.DreamBig.entity.SubscriptionEntity;
+import com.example.DreamBig.repository.SubscriptionRepository;
 import com.example.DreamBig.service.interfaces.SubscriptionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SubscriptionServiceImpl implements SubscriptionService {
-    public void activate(Subscription subscription) {
-        subscription.setActive(true);
+
+    @Autowired
+    private SubscriptionRepository subscriptionRepository;
+
+    @Override
+    public SubscriptionEntity createSubscription(SubscriptionEntity subscription) {
+        return subscriptionRepository.save(subscription);
     }
 
-    public void deactivate(Subscription subscription) {
-        subscription.setActive(false);
+    @Override
+    public SubscriptionEntity getSubscriptionById(Long id) {
+        return subscriptionRepository.findById(id).orElse(null);
     }
 
-    public boolean isValidFor(Subscription subscription, String sessionType) {
+    @Override
+    public List<SubscriptionEntity> getAllSubscriptions() {
+        return subscriptionRepository.findAll();
+    }
 
-        String type = subscription.getType();
-        return type.equalsIgnoreCase(sessionType) || "Unlimited".equalsIgnoreCase(type);
+    @Override
+    public SubscriptionEntity updateSubscription(SubscriptionEntity subscription) {
+        return subscriptionRepository.save(subscription);
+    }
+
+    @Override
+    public void deleteSubscription(Long id) {
+        subscriptionRepository.deleteById(id);
     }
 }

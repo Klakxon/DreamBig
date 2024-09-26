@@ -1,66 +1,56 @@
 package com.example.DreamBig.service.implementations;
 
-import com.example.DreamBig.model.Club;
-import com.example.DreamBig.model.Session;
-import com.example.DreamBig.model.Trainer;
+import com.example.DreamBig.entity.ClubEntity;
+import com.example.DreamBig.repository.ClubRepository;
 import com.example.DreamBig.service.interfaces.ClubService;
-import com.example.DreamBig.service.interfaces.TrainerService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ClubServiceImpl implements ClubService {
-    private TrainerService trainerService;
+
+    private final ClubRepository clubRepository;
 
     @Autowired
-    public void setTrainerService(TrainerService trainerService) {
-        this.trainerService = trainerService;
+    public ClubServiceImpl(ClubRepository clubRepository) {
+        this.clubRepository = clubRepository;
     }
 
-    public void addTrainer(Club club, Trainer trainer) {
-        if (trainer == null) {
-            throw new IllegalArgumentException("Trainer cannot be null");
-        }
-        club.getTrainers().add(trainer);
+    @Override
+    public List<ClubEntity> getAllClubs() {
+        return clubRepository.findAll();
     }
 
-    public void removeTrainer(Club club, Trainer trainer) {
-        club.getTrainers().remove(trainer);
+    @Override
+    public ClubEntity getClubById(Long id) {
+        return clubRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Club not found with id " + id));
     }
 
-    public void addSession(Club club, Session session) {
-        if (session == null) {
-            throw new IllegalArgumentException("Session cannot be null");
-        }
-        club.getSessions().add(session);
+    @Override
+    public ClubEntity createClub(ClubEntity club) {
+        return clubRepository.save(club);
     }
 
-    public void removeSession(Club club, Session session) {
-        club.getSessions().remove(session);
+    @Override
+    public ClubEntity updateClub(Long id, ClubEntity updatedClub) {
+        return clubRepository.findById(id)
+                .map(club -> {
+                    club.setName(updatedClub.getName());
+                    club.setAddress(updatedClub.getAddress());
+                    club.setHasPool(updatedClub.isHasPool());
+                    club.setHasGym(updatedClub.isHasGym());
+                    club.setHasCardioZone(updatedClub.isHasCardioZone());
+                    return clubRepository.save(club);
+                })
+                .orElseThrow(() -> new EntityNotFoundException("Club not found with id " + id));
     }
 
-    public List<Session> getSessionsByDate(Club club, String date) {
-        List<Session> sessionsByDate = new ArrayList<>();
-        for (Session session : club.getSessions()) {
-            if (session.getDateTime().contains(date)) {
-                sessionsByDate.add(session);
-            }
-        }
-        return sessionsByDate;
+    @Override
+    public void deleteClub(Long id) {
+        clubRepository.deleteById(id);
     }
-
-    public boolean hasTrainer(Club club, Trainer trainer) {
-        return club.getTrainers().contains(trainer);
-    }
-
-    public void addTrainerIfAvailable(Club club, Trainer trainer, String dateTime) {
-        if (!trainerService.isAvailable(trainer, dateTime)) {
-            throw new IllegalArgumentException("Trainer is not available at the specified time.");
-        }
-        addTrainer(club, trainer);
-    }
-
 }

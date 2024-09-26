@@ -9,13 +9,16 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
+
     @Bean
     public SessionService sessionService() {
         return new SessionServiceImpl();
     }
 
     @Bean
-    public TrainerService trainerService(SessionService sessionService) {
-        return new TrainerServiceImpl(sessionService);
+    public TrainerService trainerService() {
+        TrainerServiceImpl trainerService = new TrainerServiceImpl();
+        trainerService.setSessionService(sessionService());
+        return trainerService;
     }
 }

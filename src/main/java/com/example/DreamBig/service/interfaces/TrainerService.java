@@ -1,11 +1,13 @@
 package com.example.DreamBig.service.interfaces;
 
-import com.example.DreamBig.model.Trainer;
-import com.example.DreamBig.model.User;
+import com.example.DreamBig.entity.TrainerEntity;
+import java.util.List;
 
 public interface TrainerService {
-    boolean isAvailable(Trainer trainer, String dateTime);
-    void bookSession(Trainer trainer, User user, String dateTime, String sessionType);
-    void cancelSession(Trainer trainer, String dateTime);
-    boolean hasSessionAt(Trainer trainer, String dateTime);
+    TrainerEntity createTrainer(TrainerEntity trainer);
+    TrainerEntity getTrainerById(Long id);
+    List<TrainerEntity> getAllTrainers();
+    TrainerEntity updateTrainer(TrainerEntity trainer);
+    void deleteTrainer(Long id);
+    void setSessionService(SessionService sessionService);
 }

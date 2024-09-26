@@ -1,33 +1,67 @@
 package com.example.DreamBig.service.implementations;
 
-import com.example.DreamBig.enums.Roles;
-import com.example.DreamBig.model.User;
+import com.example.DreamBig.entity.UserEntity;
+import com.example.DreamBig.repository.UserRepository;
 import com.example.DreamBig.service.interfaces.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    public boolean hasRole(User user, String role) {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    public UserEntity createUser(UserEntity user) {
+        return userRepository.save(user);
+    }
+
+    @Override
+    public UserEntity getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<UserEntity> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public UserEntity updateUser(UserEntity user) {
+        return userRepository.save(user);
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean hasRole(UserEntity user, String role) {
         return user.getRole().equalsIgnoreCase(role);
     }
 
-    public void assignRole(User user, String role) {
-        if (role != null && !role.isEmpty()) {
-            user.setRole(role);
-        } else {
-            throw new IllegalArgumentException("Role cannot be empty");
-        }
+    @Override
+    public void assignRole(UserEntity user, String role) {
+        user.setRole(role);
+        userRepository.save(user);
     }
 
-    public boolean isAdmin(User user) {
-        return Roles.ADMIN.toString().equalsIgnoreCase(user.getRole());
+    @Override
+    public boolean isAdmin(UserEntity user) {
+        return hasRole(user, "ADMIN");
     }
 
-    public boolean isTrainer(User user) {
-        return Roles.TRAINER.toString().equalsIgnoreCase(user.getRole());
+    @Override
+    public boolean isTrainer(UserEntity user) {
+        return hasRole(user, "TRAINER");
     }
 
-    public boolean isUser(User user) {
-        return Roles.USER.toString().equalsIgnoreCase(user.getRole());
+    @Override
+    public boolean isUser(UserEntity user) {
+        return hasRole(user, "USER");
     }
 }

@@ -1,12 +1,12 @@
 package com.example.DreamBig.service.interfaces;
 
-import com.example.DreamBig.model.Session;
-import com.example.DreamBig.model.User;
+import com.example.DreamBig.entity.SessionEntity;
+import java.util.List;
 
 public interface SessionService {
-    void addParticipant(Session session, User user);
-    void removeParticipant(Session session, User user);
-    boolean isFullyBooked(Session session);
-    int getMaxParticipants(Session session);
-    boolean isParticipant(Session session, User user);
+    SessionEntity createSession(SessionEntity session);
+    SessionEntity getSessionById(Long id);
+    List<SessionEntity> getAllSessions();
+    SessionEntity updateSession(SessionEntity session);
+    void deleteSession(Long id);
 }

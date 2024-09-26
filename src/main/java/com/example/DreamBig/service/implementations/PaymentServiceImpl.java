@@ -1,20 +1,41 @@
 package com.example.DreamBig.service.implementations;
 
-import com.example.DreamBig.model.Payment;
+import com.example.DreamBig.entity.PaymentEntity;
+import com.example.DreamBig.repository.PaymentRepository;
 import com.example.DreamBig.service.interfaces.PaymentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
-    public void markAsCompleted(Payment payment) {
-        payment.setStatus("Completed");
+
+    @Autowired
+    private PaymentRepository paymentRepository;
+
+    @Override
+    public PaymentEntity createPayment(PaymentEntity payment) {
+        return paymentRepository.save(payment);
     }
 
-    public boolean isCompleted(Payment payment) {
-        return "Completed".equalsIgnoreCase(payment.getStatus());
+    @Override
+    public PaymentEntity getPaymentById(Long id) {
+        return paymentRepository.findById(id).orElse(null);
     }
 
-    public boolean isPending(Payment payment) {
-        return "Pending".equalsIgnoreCase(payment.getStatus());
+    @Override
+    public List<PaymentEntity> getAllPayments() {
+        return paymentRepository.findAll();
+    }
+
+    @Override
+    public PaymentEntity updatePayment(PaymentEntity payment) {
+        return paymentRepository.save(payment);
+    }
+
+    @Override
+    public void deletePayment(Long id) {
+        paymentRepository.deleteById(id);
     }
 }
