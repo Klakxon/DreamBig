@@ -5,6 +5,8 @@ import com.example.DreamBig.repository.UserRepository;
 import com.example.DreamBig.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -14,8 +16,31 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PhoneVerificationService phoneVerificationService;
+
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+
     @Override
     public UserEntity createUser(UserEntity user) {
+        try {
+            boolean isPhoneValid = phoneVerificationService.verifyPhoneNumber(user.getPhoneNumber());
+            user.setPhoneNumberValid(isPhoneValid);
+
+            if (isPhoneValid) {
+                logger.info("User created with valid phone number: {}", user.getPhoneNumber());
+            } else {
+                logger.warn("User created with invalid phone number: {}", user.getPhoneNumber());
+            }
+
+        } catch (Exception e) {
+            logger.error("Failed to verify phone number for user: {}", user.getPhoneNumber(), e);
+        }
         return userRepository.save(user);
     }
 

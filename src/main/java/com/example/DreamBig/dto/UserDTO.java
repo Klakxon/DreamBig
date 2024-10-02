@@ -1,38 +1,44 @@
-package com.example.DreamBig.entity;
+package com.example.DreamBig.dto;
 
-import jakarta.persistence.*;
-import java.util.List;
+import jakarta.validation.constraints.*;
 
-@Entity
-@Table(name = "users")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class UserEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserDTO {
+    @NotNull(message = "ID cannot be null")
+    @Positive(message = "ID must be a positive number")
     private Long id;
 
+    @NotEmpty(message = "Full name cannot be empty")
+    @Size(min = 2, max = 50, message = "Full name must be between 2 and 50 characters")
     private String fullName;
 
+    @NotEmpty(message = "Phone number cannot be empty")
+    @Pattern(regexp = "\\+?\\d{10,13}", message = "Phone number must be between 10 and 13 digits and can optionally start with a plus")
     private String phoneNumber;
 
+    @Email(message = "Email should be valid")
+    @NotEmpty(message = "Email cannot be empty")
     private String email;
 
+    @NotEmpty(message = "Password cannot be empty")
+    @Size(min = 6, message = "Password must be at least 6 characters long")
     private String password;
 
+    @NotEmpty(message = "Role cannot be empty")
     private String role;
 
+    @NotNull(message = "IsPhoneNumberValid cannot be null")
     private boolean isPhoneNumberValid;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<SubscriptionEntity> subscriptions;
+    public UserDTO() {}
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<PaymentEntity> payments;
-
-    @ManyToMany(mappedBy = "participants")
-    private List<SessionEntity> sessions;
-
+    public UserDTO(Long id, String fullName, String phoneNumber, String email, String password, String role) {
+        this.id = id;
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 
     public Long getId() {
         return id;
@@ -80,30 +86,6 @@ public class UserEntity {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public List<SubscriptionEntity> getSubscriptions() {
-        return subscriptions;
-    }
-
-    public void setSubscriptions(List<SubscriptionEntity> subscriptions) {
-        this.subscriptions = subscriptions;
-    }
-
-    public List<PaymentEntity> getPayments() {
-        return payments;
-    }
-
-    public void setPayments(List<PaymentEntity> payments) {
-        this.payments = payments;
-    }
-
-    public List<SessionEntity> getSessions() {
-        return sessions;
-    }
-
-    public void setSessions(List<SessionEntity> sessions) {
-        this.sessions = sessions;
     }
 
     public boolean isPhoneNumberValid() {

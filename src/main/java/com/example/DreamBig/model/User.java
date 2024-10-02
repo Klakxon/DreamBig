@@ -13,6 +13,7 @@ public class User {
     private String email;
     private String password;
     private String role;
+    private boolean isPhoneNumberValid;
 
     private ValidationService validationService;
 
@@ -98,5 +99,13 @@ public class User {
             throw new IllegalArgumentException("Role cannot be empty");
         }
         this.role = role;
+    }
+
+    public boolean isPhoneNumberValid() {
+        return isPhoneNumberValid;
+    }
+
+    public void setPhoneNumberValid(boolean isPhoneNumberValid) {
+        this.isPhoneNumberValid = isPhoneNumberValid;
     }
 }
