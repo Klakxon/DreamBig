@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 @Component
 public class ValidationServiceImpl implements ValidationService {
+    @Override
     public boolean isValidPhoneNumber(String phoneNumber) {
         String phonePattern = "\\+?\\d{10,13}";
         Pattern pattern = Pattern.compile(phonePattern);
@@ -16,6 +17,7 @@ public class ValidationServiceImpl implements ValidationService {
         return matcher.matches();
     }
 
+    @Override
     public boolean isValidEmail(String email) {
         String emailPattern = "^[A-Za-z0-9+_.-]+@(.+)$";
         Pattern pattern = Pattern.compile(emailPattern);
@@ -23,6 +25,7 @@ public class ValidationServiceImpl implements ValidationService {
         return matcher.matches();
     }
 
+    @Override
     public boolean checkPassword(User user, String password) {
         return user.getPassword().equals(password);
     }

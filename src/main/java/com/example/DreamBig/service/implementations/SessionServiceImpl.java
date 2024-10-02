@@ -1,4 +1,4 @@
-package com.example.DreamBig.service.implementations.;
+package com.example.DreamBig.service.implementations;
 
 import com.example.DreamBig.entity.SessionEntity;
 import com.example.DreamBig.repository.SessionRepository;
