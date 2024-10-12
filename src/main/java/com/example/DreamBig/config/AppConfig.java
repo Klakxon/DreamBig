@@ -21,4 +21,6 @@ public class AppConfig {
         trainerService.setSessionService(sessionService);
         return trainerService;
     }
+
+
 }
