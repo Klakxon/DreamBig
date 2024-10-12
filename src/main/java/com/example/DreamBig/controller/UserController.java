@@ -32,10 +32,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> createUser(@Valid@RequestBody UserDTO userDTO) {
-        if (userDTO.getFullName() == null || userDTO.getFullName().isEmpty()) {
-            throw new InvalidInputException("Full name cannot be empty");
-        }
+    public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserDTO userDTO) {
         users.add(userDTO);
         return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
     }
@@ -54,6 +51,7 @@ public class UserController {
         }
         throw new ResourceNotFoundException("User not found with ID: " + id);
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable Long id) {

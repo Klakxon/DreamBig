@@ -11,14 +11,14 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
     @Bean
-    public SessionService sessionService() {
+    public static SessionService sessionService() {
         return new SessionServiceImpl();
     }
 
     @Bean
-    public TrainerService trainerService() {
+    public static TrainerService trainerService(SessionService sessionService) {
         TrainerServiceImpl trainerService = new TrainerServiceImpl();
-        trainerService.setSessionService(sessionService());
+        trainerService.setSessionService(sessionService);
         return trainerService;
     }
 }
