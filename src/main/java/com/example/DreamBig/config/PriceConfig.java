@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class PriceConfig {
-    @Value ("${business.feature.subscription.standartprice:1000}")
+    @Value ("${business.feature.subscription.standardprice:1000}")
     private int standardPrice;
 
     public void setStandardPrice(int standardPrice){
