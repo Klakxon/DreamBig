@@ -1,5 +1,5 @@
 package com.example.DreamBig.controller;
-import com.dreambigproject.DreamBigStarter.service.SeasonalDiscountService;
+import com.dreambigproject.dreambigstarter.service.SeasonalDiscountService;
 import com.example.DreamBig.service.implementations.PriceService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,12 +16,6 @@ public class PriceController {
         this.priceService = priceService;
     }
 
-    /**
-     * Метод для обчислення кінцевої вартості абонементу з урахуванням стандартної ціни,
-     * довжини підписки та сезонної знижки.
-     * @param subscriptionLength тривалість підписки у місяцях
-     * @return кінцева ціна з урахуванням знижки
-     */
     @GetMapping("/calculate-final-price")
     public double calculateFinalPrice(@RequestParam int subscriptionLength) {
         double originalPrice = priceService.calculateTotalPrice(subscriptionLength);
