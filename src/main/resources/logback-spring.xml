@@ -1,16 +1,17 @@
 <configuration>
-    <!-- Консольний апендер з власним Layout -->
-    <appender name="CUSTOM_CONSOLE" class="com.example.DreamBig.logging.CustomConsoleAppender"/>
+    <appender name="CUSTOM_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %marker %msg%n</pattern>
+        </layout>
+    </appender>
 
-    <!-- Файловий апендер з простим паттерн Layout -->
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>app.log</file>
         <encoder>
-            <pattern>%date %-5level [%thread] %logger{36} - %msg%n</pattern>
+            <pattern>%date %-5level [%thread] %logger{36} - %marker %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- Рівень логування для кореневого логера -->
     <root level="DEBUG">
         <appender-ref ref="CUSTOM_CONSOLE"/>
         <appender-ref ref="FILE"/>
