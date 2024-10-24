@@ -25,6 +25,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/home", "/login").permitAll()
                         .requestMatchers("/api/session/visit").hasAuthority("visitSession")
                         .requestMatchers("/api/session/arrange").hasAuthority("arrangeSession")
                         .requestMatchers("/api/secret").hasAuthority("accessSecretData")
