@@ -1,5 +1,5 @@
 <configuration>
-    <appender name="CUSTOM_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="CUSTOM_CONSOLE" class="com.example.DreamBig.logging.CustomConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %marker %msg%n</pattern>
         </layout>
@@ -12,7 +12,7 @@
         </encoder>
     </appender>
 
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="CUSTOM_CONSOLE"/>
         <appender-ref ref="FILE"/>
     </root>
