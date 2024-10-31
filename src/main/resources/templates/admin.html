@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Admin Page</title>
+</head>
+<body>
+<h1>Admin Dashboard</h1>
+<div th:if="${#authorization.expression('hasRole(\'ADMIN\')')}">
+  <p>This section is visible only to Admins.</p>
+</div>
+<div th:if="${#authorization.expression('hasRole(\'TRAINER\')')}">
+  <p>This section is visible only to Trainers.</p>
+</div>
+</body>
+</html>

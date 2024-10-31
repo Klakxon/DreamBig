@@ -1,7 +1,11 @@
 package com.example.DreamBig.model;
 
+import com.example.DreamBig.config.RolePrivilegeConfig;
 import com.example.DreamBig.service.implementations.ValidationServiceImpl;
 import com.example.DreamBig.service.interfaces.ValidationService;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Батьківський клас, який описує звичайного користувача.
@@ -13,6 +17,7 @@ public class User {
     private String email;
     private String password;
     private String role;
+    private Set<String> privileges;
     private boolean isPhoneNumberValid;
 
     private ValidationService validationService;
@@ -34,8 +39,22 @@ public class User {
         this.email = email;
         this.password = password;
         this.role = role;
+        this.privileges = new HashSet<>(getPrivilegesByRole(role));
 
         this.validationService = new ValidationServiceImpl();
+    }
+
+    private Set<String> getPrivilegesByRole(String role) {
+        switch (role.toUpperCase()) {
+            case "USER":
+                return RolePrivilegeConfig.getUserPrivileges();
+            case "TRAINER":
+                return RolePrivilegeConfig.getTrainerPrivileges();
+            case "ADMIN":
+                return RolePrivilegeConfig.getAdminPrivileges();
+            default:
+                throw new IllegalArgumentException("Unknown role: " + role);
+        }
     }
 
     public Long getId() {
@@ -92,6 +111,10 @@ public class User {
 
     public String getRole() {
         return role;
+    }
+
+    public Set<String> getPrivileges() {
+        return privileges;
     }
 
     public void setRole(String role) {
