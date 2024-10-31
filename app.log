@@ -8596,118 +8596,151 @@ org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (
 2024-10-24 11:12:55,490 WARN  [http-nio-8080-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource home.]
 2024-10-24 11:13:16,583 WARN  [http-nio-8080-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
 2024-10-24 11:13:28,103 WARN  [http-nio-8080-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource home.]
-2024-10-24 16:20:46,702 INFO  [background-preinit] o.h.validator.internal.util.Version -  HV000001: Hibernate Validator 8.0.1.Final
-2024-10-24 16:20:46,758 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  Starting DreamBigApplication using Java 17.0.11 with PID 13872 (C:\Users\User\IdeaProjects\DreamBig\target\classes started by User in C:\Users\User\IdeaProjects\DreamBig)
-2024-10-24 16:20:46,759 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  No active profile set, falling back to 1 default profile: "default"
-2024-10-24 16:20:46,817 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-10-24 16:20:46,817 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-10-24 16:20:48,220 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate -  Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-10-24 16:20:48,351 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate -  Finished Spring Data repository scanning in 120 ms. Found 8 JPA repository interfaces.
-2024-10-24 16:20:48,826 WARN  [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker -  Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2024-10-24 16:20:48,871 INFO  [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping -  Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2024-10-24 16:20:49,253 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat initialized with port 8080 (http)
-2024-10-24 16:20:49,269 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol -  Initializing ProtocolHandler ["http-nio-8080"]
-2024-10-24 16:20:49,273 INFO  [restartedMain] o.a.catalina.core.StandardService -  Starting service [Tomcat]
-2024-10-24 16:20:49,273 INFO  [restartedMain] o.a.catalina.core.StandardEngine -  Starting Servlet engine: [Apache Tomcat/10.1.28]
-2024-10-24 16:20:49,344 INFO  [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring embedded WebApplicationContext
-2024-10-24 16:20:49,344 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext -  Root WebApplicationContext: initialization completed in 2526 ms
-2024-10-24 16:20:49,389 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Starting...
-2024-10-24 16:20:49,668 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool -  HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2024-10-24 16:20:49,670 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Start completed.
-2024-10-24 16:20:49,683 INFO  [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration -  H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
-2024-10-24 16:20:49,896 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper -  HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-10-24 16:20:49,995 INFO  [restartedMain] org.hibernate.Version -  HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-10-24 16:20:50,047 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator -  HHH000026: Second-level cache disabled
-2024-10-24 16:20:50,510 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo -  No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-10-24 16:20:52,115 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator -  HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-10-24 16:20:52,221 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean -  Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-10-24 16:20:53,644 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer -  LiveReload server is running on port 35729
-2024-10-24 16:20:53,673 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol -  Starting ProtocolHandler ["http-nio-8080"]
-2024-10-24 16:20:53,695 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat started on port 8080 (http) with context path '/'
-2024-10-24 16:20:53,709 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  Started DreamBigApplication in 7.807 seconds (process running for 9.444)
-2024-10-24 16:21:16,487 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-10-24 16:21:16,488 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet -  Initializing Servlet 'dispatcherServlet'
-2024-10-24 16:21:16,490 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet -  Completed initialization in 2 ms
-2024-10-24 16:22:18,126 WARN  [http-nio-8080-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource home.]
-2024-10-24 16:22:43,503 WARN  [http-nio-8080-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
-2024-10-24 16:22:49,467 WARN  [http-nio-8080-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
-2024-10-24 16:52:41,219 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean -  Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-10-24 16:52:41,261 WARN  [SpringApplicationShutdownHook] o.s.b.f.s.DisposableBeanAdapter -  Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
-2024-10-24 16:52:41,262 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown initiated...
-2024-10-24 16:52:41,266 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown completed.
-2024-10-27 16:54:06,541 INFO  [background-preinit] o.h.validator.internal.util.Version -  HV000001: Hibernate Validator 8.0.1.Final
-2024-10-27 16:54:06,646 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  Starting DreamBigApplication using Java 17.0.11 with PID 8464 (C:\Users\User\IdeaProjects\DreamBig\target\classes started by User in C:\Users\User\IdeaProjects\DreamBig)
-2024-10-27 16:54:06,649 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  No active profile set, falling back to 1 default profile: "default"
-2024-10-27 16:54:06,779 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-10-27 16:54:06,779 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-10-27 16:54:08,989 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate -  Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-10-27 16:54:09,186 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate -  Finished Spring Data repository scanning in 176 ms. Found 8 JPA repository interfaces.
-2024-10-27 16:54:09,974 WARN  [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker -  Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2024-10-27 16:54:10,060 INFO  [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping -  Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2024-10-27 16:54:10,729 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat initialized with port 8080 (http)
-2024-10-27 16:54:10,749 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol -  Initializing ProtocolHandler ["http-nio-8080"]
-2024-10-27 16:54:10,756 INFO  [restartedMain] o.a.catalina.core.StandardService -  Starting service [Tomcat]
-2024-10-27 16:54:10,756 INFO  [restartedMain] o.a.catalina.core.StandardEngine -  Starting Servlet engine: [Apache Tomcat/10.1.28]
-2024-10-27 16:54:10,885 INFO  [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring embedded WebApplicationContext
-2024-10-27 16:54:10,886 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext -  Root WebApplicationContext: initialization completed in 4105 ms
-2024-10-27 16:54:10,959 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Starting...
-2024-10-27 16:54:11,423 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool -  HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2024-10-27 16:54:11,429 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Start completed.
-2024-10-27 16:54:11,457 INFO  [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration -  H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
-2024-10-27 16:54:11,896 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper -  HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-10-27 16:54:12,117 INFO  [restartedMain] org.hibernate.Version -  HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-10-27 16:54:12,283 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator -  HHH000026: Second-level cache disabled
-2024-10-27 16:54:13,264 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo -  No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-10-27 16:54:16,556 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator -  HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-10-27 16:54:16,741 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean -  Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-10-27 16:54:19,595 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer -  LiveReload server is running on port 35729
-2024-10-27 16:54:19,643 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol -  Starting ProtocolHandler ["http-nio-8080"]
-2024-10-27 16:54:19,684 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat started on port 8080 (http) with context path '/'
-2024-10-27 16:54:19,706 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  Started DreamBigApplication in 14.399 seconds (process running for 16.619)
-2024-10-27 16:54:44,780 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-10-27 16:54:44,781 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet -  Initializing Servlet 'dispatcherServlet'
-2024-10-27 16:54:44,783 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet -  Completed initialization in 2 ms
-2024-10-27 16:55:45,928 WARN  [http-nio-8080-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource home.]
-2024-10-27 17:08:43,721 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean -  Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-10-27 17:08:43,743 WARN  [SpringApplicationShutdownHook] o.s.b.f.s.DisposableBeanAdapter -  Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
-2024-10-27 17:08:43,745 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown initiated...
-2024-10-27 17:08:43,749 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown completed.
-2024-10-27 17:08:55,172 INFO  [background-preinit] o.h.validator.internal.util.Version -  HV000001: Hibernate Validator 8.0.1.Final
-2024-10-27 17:08:55,265 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  Starting DreamBigApplication using Java 17.0.11 with PID 12748 (C:\Users\User\IdeaProjects\DreamBig\target\classes started by User in C:\Users\User\IdeaProjects\DreamBig)
-2024-10-27 17:08:55,270 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  No active profile set, falling back to 1 default profile: "default"
-2024-10-27 17:08:55,415 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-10-27 17:08:55,415 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-10-27 17:08:57,587 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate -  Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-10-27 17:08:57,785 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate -  Finished Spring Data repository scanning in 183 ms. Found 8 JPA repository interfaces.
-2024-10-27 17:08:58,590 WARN  [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker -  Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2024-10-27 17:08:58,629 INFO  [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping -  Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2024-10-27 17:08:59,217 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat initialized with port 8080 (http)
-2024-10-27 17:08:59,235 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol -  Initializing ProtocolHandler ["http-nio-8080"]
-2024-10-27 17:08:59,240 INFO  [restartedMain] o.a.catalina.core.StandardService -  Starting service [Tomcat]
-2024-10-27 17:08:59,242 INFO  [restartedMain] o.a.catalina.core.StandardEngine -  Starting Servlet engine: [Apache Tomcat/10.1.28]
-2024-10-27 17:08:59,390 INFO  [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring embedded WebApplicationContext
-2024-10-27 17:08:59,390 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext -  Root WebApplicationContext: initialization completed in 3972 ms
-2024-10-27 17:08:59,459 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Starting...
-2024-10-27 17:08:59,874 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool -  HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2024-10-27 17:08:59,876 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Start completed.
-2024-10-27 17:08:59,904 INFO  [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration -  H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
-2024-10-27 17:09:00,292 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper -  HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-10-27 17:09:00,453 INFO  [restartedMain] org.hibernate.Version -  HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-10-27 17:09:00,587 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator -  HHH000026: Second-level cache disabled
-2024-10-27 17:09:01,368 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo -  No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-10-27 17:09:04,582 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator -  HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-10-27 17:09:04,786 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean -  Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-10-27 17:09:07,375 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer -  LiveReload server is running on port 35729
-2024-10-27 17:09:07,439 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol -  Starting ProtocolHandler ["http-nio-8080"]
-2024-10-27 17:09:07,480 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat started on port 8080 (http) with context path '/'
-2024-10-27 17:09:07,502 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  Started DreamBigApplication in 13.446 seconds (process running for 15.36)
-2024-10-27 17:09:29,261 INFO  [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-10-27 17:09:29,263 INFO  [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet -  Initializing Servlet 'dispatcherServlet'
-2024-10-27 17:09:29,267 INFO  [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet -  Completed initialization in 4 ms
-2024-10-27 17:09:37,431 WARN  [http-nio-8080-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [com.example.DreamBig.exception.ResourceNotFoundException: User not found with ID: 1]
-2024-10-27 21:04:05,089 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool -  HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h44m5s230ms241µs600ns).
-2024-10-27 22:04:40,361 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool -  HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h39s579ms642µs900ns).
-2024-10-27 22:11:17,356 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean -  Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-10-27 22:11:17,368 WARN  [SpringApplicationShutdownHook] o.s.b.f.s.DisposableBeanAdapter -  Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
-2024-10-27 22:11:17,369 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown initiated...
-2024-10-27 22:11:17,373 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown completed.
+2024-10-24 19:16:01,019 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool -  HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5h23m40s219ms775µs300ns).
+2024-10-24 19:38:34,629 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool -  HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=20m33s661ms635µs100ns).
+2024-10-27 16:54:54,916 INFO  [background-preinit] o.h.validator.internal.util.Version -  HV000001: Hibernate Validator 8.0.1.Final
+2024-10-27 16:54:54,939 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  Starting DreamBigApplication using Java 20.0.1 with PID 21640 (D:\DreamBig\target\classes started by vkish in D:\DreamBig)
+2024-10-27 16:54:54,940 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  No active profile set, falling back to 1 default profile: "default"
+2024-10-27 16:54:54,969 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-27 16:54:54,969 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-27 16:54:55,591 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate -  Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-27 16:54:55,651 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate -  Finished Spring Data repository scanning in 55 ms. Found 8 JPA repository interfaces.
+2024-10-27 16:54:55,891 WARN  [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker -  Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-10-27 16:54:55,907 INFO  [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping -  Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-10-27 16:54:56,108 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat initialized with port 8080 (http)
+2024-10-27 16:54:56,116 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol -  Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-27 16:54:56,119 INFO  [restartedMain] o.a.catalina.core.StandardService -  Starting service [Tomcat]
+2024-10-27 16:54:56,119 INFO  [restartedMain] o.a.catalina.core.StandardEngine -  Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-10-27 16:54:56,164 INFO  [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring embedded WebApplicationContext
+2024-10-27 16:54:56,164 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext -  Root WebApplicationContext: initialization completed in 1194 ms
+2024-10-27 16:54:56,185 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Starting...
+2024-10-27 16:54:56,326 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool -  HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-10-27 16:54:56,327 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Start completed.
+2024-10-27 16:54:56,336 INFO  [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration -  H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-10-27 16:54:56,455 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper -  HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-27 16:54:56,494 INFO  [restartedMain] org.hibernate.Version -  HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-10-27 16:54:56,519 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator -  HHH000026: Second-level cache disabled
+2024-10-27 16:54:56,730 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo -  No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-27 16:54:57,610 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator -  HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-27 16:54:57,668 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean -  Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-27 16:54:58,411 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer -  LiveReload server is running on port 35729
+2024-10-27 16:54:58,427 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol -  Starting ProtocolHandler ["http-nio-8080"]
+2024-10-27 16:54:58,441 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat started on port 8080 (http) with context path '/'
+2024-10-27 16:54:58,448 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  Started DreamBigApplication in 3.81 seconds (process running for 4.379)
+2024-10-27 16:55:22,319 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-27 16:55:22,319 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet -  Initializing Servlet 'dispatcherServlet'
+2024-10-27 16:55:22,320 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet -  Completed initialization in 1 ms
+2024-10-27 16:55:22,381 WARN  [http-nio-8080-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-10-27 16:55:35,688 WARN  [http-nio-8080-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource home.]
+2024-10-27 16:56:43,812 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean -  Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-27 16:56:43,820 WARN  [SpringApplicationShutdownHook] o.s.b.f.s.DisposableBeanAdapter -  Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-10-27 16:56:43,821 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown initiated...
+2024-10-27 16:56:43,822 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown completed.
+2024-10-27 16:56:47,403 INFO  [background-preinit] o.h.validator.internal.util.Version -  HV000001: Hibernate Validator 8.0.1.Final
+2024-10-27 16:56:47,423 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  Starting DreamBigApplication using Java 20.0.1 with PID 9260 (D:\DreamBig\target\classes started by vkish in D:\DreamBig)
+2024-10-27 16:56:47,424 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  No active profile set, falling back to 1 default profile: "default"
+2024-10-27 16:56:47,453 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-27 16:56:47,453 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-27 16:56:48,066 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate -  Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-27 16:56:48,127 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate -  Finished Spring Data repository scanning in 55 ms. Found 8 JPA repository interfaces.
+2024-10-27 16:56:48,368 WARN  [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker -  Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-10-27 16:56:48,384 INFO  [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping -  Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-10-27 16:56:48,578 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat initialized with port 8080 (http)
+2024-10-27 16:56:48,586 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol -  Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-27 16:56:48,589 INFO  [restartedMain] o.a.catalina.core.StandardService -  Starting service [Tomcat]
+2024-10-27 16:56:48,589 INFO  [restartedMain] o.a.catalina.core.StandardEngine -  Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-10-27 16:56:48,635 INFO  [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring embedded WebApplicationContext
+2024-10-27 16:56:48,635 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext -  Root WebApplicationContext: initialization completed in 1182 ms
+2024-10-27 16:56:48,664 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Starting...
+2024-10-27 16:56:48,789 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool -  HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-10-27 16:56:48,790 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Start completed.
+2024-10-27 16:56:48,799 INFO  [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration -  H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-10-27 16:56:48,911 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper -  HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-27 16:56:48,950 INFO  [restartedMain] org.hibernate.Version -  HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-10-27 16:56:48,974 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator -  HHH000026: Second-level cache disabled
+2024-10-27 16:56:49,183 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo -  No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-27 16:56:50,086 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator -  HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-27 16:56:50,139 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean -  Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-27 16:56:50,942 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer -  LiveReload server is running on port 35729
+2024-10-27 16:56:50,961 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol -  Starting ProtocolHandler ["http-nio-8080"]
+2024-10-27 16:56:50,974 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat started on port 8080 (http) with context path '/'
+2024-10-27 16:56:50,982 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  Started DreamBigApplication in 3.859 seconds (process running for 4.401)
+2024-10-27 16:56:51,627 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-27 16:56:51,627 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet -  Initializing Servlet 'dispatcherServlet'
+2024-10-27 16:56:51,628 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet -  Completed initialization in 1 ms
+2024-10-27 16:56:51,684 WARN  [http-nio-8080-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource home.]
+2024-10-27 16:56:56,376 WARN  [http-nio-8080-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.]
+2024-10-27 16:57:02,259 WARN  [http-nio-8080-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource .]
+2024-10-27 16:57:05,282 WARN  [http-nio-8080-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource .]
+2024-10-27 16:57:06,553 WARN  [http-nio-8080-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource .]
+2024-10-27 16:57:07,788 WARN  [http-nio-8080-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource .]
+2024-10-27 16:57:08,628 WARN  [http-nio-8080-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource .]
+2024-10-27 17:13:05,245 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean -  Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-27 17:13:05,253 WARN  [SpringApplicationShutdownHook] o.s.b.f.s.DisposableBeanAdapter -  Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-10-27 17:13:05,253 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown initiated...
+2024-10-27 17:13:05,254 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Shutdown completed.
+2024-10-27 17:13:08,803 INFO  [background-preinit] o.h.validator.internal.util.Version -  HV000001: Hibernate Validator 8.0.1.Final
+2024-10-27 17:13:08,824 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  Starting DreamBigApplication using Java 20.0.1 with PID 18736 (D:\DreamBig\target\classes started by vkish in D:\DreamBig)
+2024-10-27 17:13:08,825 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  No active profile set, falling back to 1 default profile: "default"
+2024-10-27 17:13:08,854 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-27 17:13:08,854 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-27 17:13:09,446 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate -  Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-27 17:13:09,505 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate -  Finished Spring Data repository scanning in 53 ms. Found 8 JPA repository interfaces.
+2024-10-27 17:13:09,758 WARN  [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker -  Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-10-27 17:13:09,776 INFO  [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping -  Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-10-27 17:13:09,973 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat initialized with port 8080 (http)
+2024-10-27 17:13:09,981 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol -  Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-27 17:13:09,984 INFO  [restartedMain] o.a.catalina.core.StandardService -  Starting service [Tomcat]
+2024-10-27 17:13:09,984 INFO  [restartedMain] o.a.catalina.core.StandardEngine -  Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-10-27 17:13:10,028 INFO  [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring embedded WebApplicationContext
+2024-10-27 17:13:10,028 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext -  Root WebApplicationContext: initialization completed in 1174 ms
+2024-10-27 17:13:10,049 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Starting...
+2024-10-27 17:13:10,181 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool -  HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-10-27 17:13:10,182 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Start completed.
+2024-10-27 17:13:10,191 INFO  [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration -  H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-10-27 17:13:10,307 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper -  HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-27 17:13:10,346 INFO  [restartedMain] org.hibernate.Version -  HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-10-27 17:13:10,370 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator -  HHH000026: Second-level cache disabled
+2024-10-27 17:13:10,588 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo -  No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-27 17:13:11,442 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator -  HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-27 17:13:11,492 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean -  Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-27 17:13:12,232 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer -  LiveReload server is running on port 35729
+2024-10-27 17:13:12,248 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol -  Starting ProtocolHandler ["http-nio-8080"]
+2024-10-27 17:13:12,261 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat started on port 8080 (http) with context path '/'
+2024-10-27 17:13:12,269 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  Started DreamBigApplication in 3.746 seconds (process running for 4.293)
+2024-10-27 17:13:20,020 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-27 17:13:20,020 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet -  Initializing Servlet 'dispatcherServlet'
+2024-10-27 17:13:20,021 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet -  Completed initialization in 1 ms
+2024-10-27 17:13:20,074 WARN  [http-nio-8080-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource .]
+2024-10-27 17:13:20,102 WARN  [http-nio-8080-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-10-27 17:13:27,641 WARN  [http-nio-8080-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [com.example.DreamBig.exception.ResourceNotFoundException: User not found with ID: 1]
+2024-10-27 17:13:37,996 WARN  [http-nio-8080-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -  Resolved [com.example.DreamBig.exception.ResourceNotFoundException: User not found with ID: 2]
+2024-10-30 17:32:29,974 INFO  [background-preinit] o.h.validator.internal.util.Version -  HV000001: Hibernate Validator 8.0.1.Final
+2024-10-30 17:32:30,003 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  Starting DreamBigApplication using Java 22.0.1 with PID 31368 (C:\Idea\Projects\DreamBig\target\classes started by Andrii in C:\Idea\Projects\DreamBig)
+2024-10-30 17:32:30,004 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  No active profile set, falling back to 1 default profile: "default"
+2024-10-30 17:32:30,042 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-30 17:32:30,042 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor -  For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-30 17:32:30,923 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate -  Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-30 17:32:31,021 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate -  Finished Spring Data repository scanning in 89 ms. Found 8 JPA repository interfaces.
+2024-10-30 17:32:31,351 WARN  [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker -  Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [annotationActionEndpointMapping] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-10-30 17:32:31,370 INFO  [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping -  Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2024-10-30 17:32:31,660 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat initialized with port 8080 (http)
+2024-10-30 17:32:31,668 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol -  Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-30 17:32:31,673 INFO  [restartedMain] o.a.catalina.core.StandardService -  Starting service [Tomcat]
+2024-10-30 17:32:31,674 INFO  [restartedMain] o.a.catalina.core.StandardEngine -  Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-10-30 17:32:31,751 INFO  [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] -  Initializing Spring embedded WebApplicationContext
+2024-10-30 17:32:31,752 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext -  Root WebApplicationContext: initialization completed in 1709 ms
+2024-10-30 17:32:31,777 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Starting...
+2024-10-30 17:32:31,974 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool -  HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-10-30 17:32:31,976 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource -  HikariPool-1 - Start completed.
+2024-10-30 17:32:31,985 INFO  [restartedMain] o.s.b.a.h.H2ConsoleAutoConfiguration -  H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-10-30 17:32:32,136 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper -  HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-30 17:32:32,230 INFO  [restartedMain] org.hibernate.Version -  HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-10-30 17:32:32,274 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator -  HHH000026: Second-level cache disabled
+2024-10-30 17:32:32,580 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo -  No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-30 17:32:33,758 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator -  HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-30 17:32:33,822 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean -  Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-30 17:32:34,713 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer -  LiveReload server is running on port 35729
+2024-10-30 17:32:34,734 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol -  Starting ProtocolHandler ["http-nio-8080"]
+2024-10-30 17:32:34,767 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer -  Tomcat started on port 8080 (http) with context path '/'
+2024-10-30 17:32:34,774 INFO  [restartedMain] c.e.DreamBig.DreamBigApplication -  Started DreamBigApplication in 5.237 seconds (process running for 6.717)

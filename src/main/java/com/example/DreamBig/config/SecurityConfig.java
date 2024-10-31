@@ -22,20 +22,25 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.csrf().disable()
+                .authorizeRequests().anyRequest().permitAll();
+        return http.build();
+    }
+    /*@Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/users/1").permitAll()
-                        .requestMatchers("/home", "/login").permitAll()
-                        .requestMatchers("/api/session/visit").hasAuthority("visitSession")
+                        .requestMatchers("/home", "/login", "/api", "/").permitAll()
+                        *//*.requestMatchers("/api/session/visit").hasAuthority("visitSession")
                         .requestMatchers("/api/session/arrange").hasAuthority("arrangeSession")
-                        .requestMatchers("/api/secret").hasAuthority("accessSecretData")
+                        .requestMatchers("/api/secret").hasAuthority("accessSecretData")*//*
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
-    }
+    }*/
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
