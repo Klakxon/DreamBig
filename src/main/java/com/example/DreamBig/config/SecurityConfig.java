@@ -22,29 +22,23 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeRequests().anyRequest().permitAll();
-        return http.build();
-    }
-    /*@Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/home", "/login", "/api", "/").permitAll()
-                        *//*.requestMatchers("/api/session/visit").hasAuthority("visitSession")
-                        .requestMatchers("/api/session/arrange").hasAuthority("arrangeSession")
-                        .requestMatchers("/api/secret").hasAuthority("accessSecretData")*//*
-                        .anyRequest().authenticated())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+                        .requestMatchers("/home", "/profile", "/profile/*").permitAll()  // Доступні всім
+                        .requestMatchers("/admin").hasRole("ADMIN")  // Доступні тільки адміністраторам
+                        .requestMatchers("/static/**", "/images/**", "/css/**", "/js/**").permitAll()
+                        .anyRequest().authenticated()  // Всі інші запити вимагають аутентифікації
+                )
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));  // Без стану (JWT)
+
+        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
-    }*/
+    }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 }
-

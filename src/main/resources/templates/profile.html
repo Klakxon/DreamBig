@@ -1,18 +1,50 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Profile Page</title>
+    <title>User Profile</title>
+    <link rel="stylesheet" type="text/css" href="/css/profile.css">
 </head>
 <body>
-<h1>User Profile</h1>
-<form th:action="@{/profile/update}" method="post">
-  <label for="email">Email:</label>
-  <input type="text" id="email" name="email" placeholder="Enter email" /><br><br>
 
-  <label for="fullName">Full Name:</label>
-  <input type="text" id="fullName" name="fullName" placeholder="Enter full name" /><br><br>
+<!-- Шапка з логотипом -->
+<header>
+    <div class="logo">
+        <img src="/images/dreambig_logo.png" alt="DreamBig Logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a th:href="@{/home}">Головна</a></li>
+            <li><a th:href="@{/profile}">Профіль</a></li>
+            <li><a th:href="@{/admin}">Адмін</a></li>
+            <li><a th:href="@{/services}">Послуги</a></li>
+            <li><a th:href="@{/contact}">Контакти</a></li>
+        </ul>
+    </nav>
+</header>
 
-  <button type="submit">Update Profile</button>
-</form>
+<!-- Фонова картинка для сторінки -->
+<div class="background-image">
+    <div class="container">
+        <!-- Заголовок по центру -->
+        <h1>User Profile</h1>
+
+        <!-- Статично відцентровані ліворуч поля -->
+        <div class="profile-info">
+            <p><b>Email: </b><span th:text="${email}">default email</span></p>
+            <p><b>Full Name: </b><span th:text="${fullName}">default full name</span></p>
+        </div>
+
+        <form th:action="@{/profile/update}" method="post">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="Enter email" th:value="${email}"/><br><br>
+
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter full name" th:value="${fullName}"/><br><br>
+
+            <button type="submit">Update Profile</button>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>

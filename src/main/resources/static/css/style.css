@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+header .logo img {
+    max-width: 80px;
+    height: auto; /* Зберігає пропорції зображення */
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px;
+    background: url('/images/hero_background.jpg') center/cover no-repeat;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Відступи між елементами */
+}
+
+.hero h1, .hero p {
+    background-color: rgba(0, 0, 0, 0.5); /* Напівпрозорий чорний фон */
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.hero .button {
+    padding: 10px 20px;
+    color: #1a73e8;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.services {
+    padding: 40px;
+    text-align: center;
+}
+
+.service-list {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.service-item {
+    width: 30%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.service-item img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.services .service-list .service-item img {
+    width: 100%; /* Зменшує картинку до 100% ширини контейнера */
+    max-width: 300px; /* Максимальна ширина картинки */
+    height: auto; /* Автоматична висота для збереження пропорцій */
+}
+
+.contact-info {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    padding: 10px;
+    background-color: #1a73e8;
+    color: white;
+    text-align: center;
+}
+
+.social-media a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}

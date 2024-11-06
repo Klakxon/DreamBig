@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProfileController {
 
     @GetMapping("/profile")
-    public String profilePage() {
+    public String profile() {
         return "profile";
     }
 
@@ -21,10 +21,5 @@ public class ProfileController {
         model.addAttribute("email", email);
         model.addAttribute("fullName", fullName);
         return "profile";
-    }
-
-    @GetMapping("/admin")
-    public String adminPage() {
-        return "admin";
     }
 }
