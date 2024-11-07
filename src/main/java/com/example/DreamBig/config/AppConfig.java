@@ -1,5 +1,6 @@
 package com.example.DreamBig.config;
 
+import com.example.DreamBig.security.JwtUtil;
 import com.example.DreamBig.service.implementations.*;
 import com.example.DreamBig.service.interfaces.GreetingService;
 import com.example.DreamBig.service.interfaces.SessionService;
@@ -15,7 +16,14 @@ public class AppConfig {
 
     @Bean
     public static SessionService sessionService() {
+        System.out.println("SessionService is being created...");
         return new SessionServiceImpl();
+    }
+
+    @Bean
+    public GreetingService greetingService() {
+        System.out.println("GreetingService is being created...");
+        return new GreetingServiceDefault();
     }
 
     @Bean
@@ -41,5 +49,10 @@ public class AppConfig {
     @ConditionalOnExpression("#{T(java.lang.Math).random() < 0.001}")
     public LuckyUserService luckyUserService() {
         return new LuckyUserService();
+    }
+
+    @Bean
+    public JwtUtil jwtUtil() {
+        return new JwtUtil();
     }
 }

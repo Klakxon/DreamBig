@@ -1,4 +1,4 @@
-package com.example.DreamBig;
+package com.example.dreambig;
 
 import com.example.DreamBig.config.AppConfig;
 import com.example.DreamBig.service.interfaces.GreetingService;

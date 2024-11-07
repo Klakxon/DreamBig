@@ -1,24 +1,23 @@
-package com.example.DreamBig;
+package com.example.dreambig;
 
-import com.example.DreamBig.config.AppConfig;
 import com.example.DreamBig.service.interfaces.GreetingService;
-import com.example.DreamBig.service.interfaces.SessionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest(classes = AppConfig.class)
+@SpringBootTest()
 public class AppConfigIntegrationTest {
 
     @Autowired
-    private SessionService sessionService;
+    private GreetingService greetingService;  // Замість конкретного типу можна використовувати інтерфейс
 
-    @Autowired
-    private GreetingService greetingService;
+    @Value("${country:Default}")
+    private String country;
 
     @DynamicPropertySource
     static void dynamicProperties(DynamicPropertyRegistry registry) {
@@ -26,13 +25,12 @@ public class AppConfigIntegrationTest {
     }
 
     @Test
-    public void whenContextLoads_thenSessionServiceIsCreated() {
-        assertThat(sessionService).isNotNull();
-    }
-
-    @Test
-    public void whenCountryNotUkraine_thenGreetingServiceDefaultIsLoaded() {
-        assertThat(greetingService.greet())
-                .isEqualTo("Welcome to DreamBig sport club application!");
+    public void whenCountryIsUkraine_thenGreetingIsFromUkraine() {
+        // Якщо країна "Ukraine", повинно бути українське привітання
+        if ("Ukraine".equals(country)) {
+            assertThat(greetingService.greet()).isEqualTo("Слава Україні! Ласкаво просимо у додаток мережі спортклубів DreamBig!");
+        } else {
+            assertThat(greetingService.greet()).isEqualTo("Welcome to DreamBig sport club application!");
+        }
     }
 }

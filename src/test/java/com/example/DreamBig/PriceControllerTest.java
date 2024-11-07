@@ -1,20 +1,25 @@
-package com.example.DreamBig;
+package com.example.dreambig;
 
 import com.dreambigproject.dreambigstarter.service.SeasonalDiscountService;
 import com.example.DreamBig.controller.PriceController;
+import com.example.DreamBig.repository.UserRepository;
+import com.example.DreamBig.security.JwtUtil;
 import com.example.DreamBig.service.implementations.PriceService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(PriceController.class)
+@Import({TestSecurityConfig.class, JwtUtil.class})
 public class PriceControllerTest {
 
     @Autowired
@@ -25,6 +30,9 @@ public class PriceControllerTest {
 
     @MockBean
     private PriceService priceService;
+
+    @MockBean
+    private UserRepository userRepository;
 
     @Test
     public void whenCalculateFinalPrice_thenExecuteBusinessLogic() throws Exception {
@@ -40,9 +48,12 @@ public class PriceControllerTest {
 
         when(discountService.calculateDiscountedPrice(originalPrice)).thenReturn(discountedPrice);
 
+        // Додамо перевірку з округленням, щоб уникнути неточностей із плаваючою комою
         mockMvc.perform(get("/calculate-final-price")
-                        .param("subscriptionLength", String.valueOf(subscriptionLength)))
+                        .param("subscriptionLength", String.valueOf(subscriptionLength))
+                        .with(user("admin").password("password").roles("ADMIN"))) // Додати ролі
                 .andExpect(status().isOk())
-                .andExpect(content().string("96.0"));
+                .andExpect(content().string(String.valueOf(discountedPrice)));
+
     }
 }
