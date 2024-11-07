@@ -42,6 +42,4 @@ public class AppConfig {
     public LuckyUserService luckyUserService() {
         return new LuckyUserService();
     }
-
-
 }

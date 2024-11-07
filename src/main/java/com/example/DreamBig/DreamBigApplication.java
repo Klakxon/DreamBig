@@ -1,12 +1,62 @@
 package com.example.DreamBig;
 
+import com.example.DreamBig.entity.UserEntity;
+import com.example.DreamBig.model.User;
+import com.example.DreamBig.repository.UserRepository;
+import com.example.DreamBig.service.implementations.ValidationServiceImpl;
+import com.example.DreamBig.service.interfaces.ValidationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-public class DreamBigApplication {
+public class DreamBigApplication implements CommandLineRunner {
+
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	private ValidationService validationService = new ValidationServiceImpl(); // Використовуємо реальний екземпляр для валідації
 
 	public static void main(String[] args) {
 		SpringApplication.run(DreamBigApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		// Перевірка чи існують користувачі в базі даних
+		if (userRepository.count() == 0) {
+			// Створення користувачів з відповідними ролями
+			createDefaultUser(1L, "adminPassword", "ADMIN", "Administrator", "+380123456789", "admin@example.com");
+			createDefaultUser(2L, "userPassword", "USER", "John Doe", "+380987654321", "user@example.com");
+
+			System.out.println("Default users created");
+		}
+	}
+
+	private void createDefaultUser(Long userId, String password, String role, String fullName, String phoneNumber, String email) {
+		// Перевірка валідності телефонного номера та email
+		if (!validationService.isValidPhoneNumber(phoneNumber)) {
+			throw new IllegalArgumentException("Invalid phone number format");
+		}
+		if (!validationService.isValidEmail(email)) {
+			throw new IllegalArgumentException("Invalid email format");
+		}
+
+		// Створення користувача
+		UserEntity user = new UserEntity();
+		user.setId(userId);
+		user.setRole(role);
+		user.setEmail(email);
+		user.setPassword(passwordEncoder.encode(password));
+		user.setFullName(fullName);
+
+		// Збереження користувача в базу
+		userRepository.save(user);
 	}
 }

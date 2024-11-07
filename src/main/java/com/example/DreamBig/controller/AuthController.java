@@ -5,11 +5,14 @@ import com.example.DreamBig.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
@@ -21,13 +24,25 @@ public class AuthController {
         this.jwtUtil = jwtUtil;
     }
 
-    @PostMapping("/login")
-    public String login(@RequestBody User loginRequest) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword())
-        );
-        // Генеруємо токен після успішної аутентифікації
-        String token = jwtUtil.generateToken(loginRequest);
-        return token;
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
     }
+
+    @PostMapping("/login")
+    public String login(@RequestBody User loginRequest, Model model) {
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword())
+            );
+            // Генеруємо токен після успішної аутентифікації
+            String token = jwtUtil.generateToken(loginRequest);
+            model.addAttribute("token", token);
+            return "home"; // перенаправлення до домашньої сторінки
+        } catch (AuthenticationException e) {
+            model.addAttribute("error", "Invalid email or password!");
+            return "login"; // повернення на сторінку логіну з помилкою
+        }
+    }
+
 }

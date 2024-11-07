@@ -4,6 +4,7 @@ import com.example.DreamBig.entity.UserEntity;
 import com.example.DreamBig.repository.UserRepository;
 import com.example.DreamBig.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private PhoneVerificationService phoneVerificationService;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
@@ -41,6 +45,7 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             logger.error("Failed to verify phone number for user: {}", user.getPhoneNumber(), e);
         }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 

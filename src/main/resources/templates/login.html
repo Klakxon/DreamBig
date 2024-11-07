@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" /> <!-- Підключення загальних стилів -->
+</head>
+<body>
+<header>
+  <div class="profile-header">
+    <h1>DreamBig - Авторизація</h1>
+  </div>
+</header>
+
+<div class="login-container">
+  <h2>Увійти в систему</h2>
+
+  <form th:action="@{/login}" method="post" class="login-form">
+    <div class="form-group">
+      <label for="email">Електронна пошта</label>
+      <input type="email" id="email" name="email" placeholder="Введіть електронну пошту" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Пароль</label>
+      <input type="password" id="password" name="password" placeholder="Введіть пароль" required>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="login-button">Увійти</button>
+    </div>
+  </form>
+  <div th:if="${param.error}" class="error-message">
+    Invalid email or password!
+  </div>
+</div>
+</body>
+</html>
