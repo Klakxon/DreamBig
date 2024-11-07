@@ -4,6 +4,9 @@ import com.example.DreamBig.entity.UserEntity;
 import com.example.DreamBig.repository.UserRepository;
 import com.example.DreamBig.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
@@ -31,20 +34,17 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserEntity createUser(UserEntity user) {
-        try {
-            boolean isPhoneValid = phoneVerificationService.verifyPhoneNumber(user.getPhoneNumber());
-            user.setPhoneNumberValid(isPhoneValid);
+    public UserEntity createUser(UserEntity user) throws Exception {
+        // Логіка без обробки виключень вручну, буде перехоплено аспектом
+        boolean isPhoneValid = phoneVerificationService.verifyPhoneNumber(user.getPhoneNumber());
+        user.setPhoneNumberValid(isPhoneValid);
 
-            if (isPhoneValid) {
-                logger.info("User created with valid phone number: {}", user.getPhoneNumber());
-            } else {
-                logger.warn("User created with invalid phone number: {}", user.getPhoneNumber());
-            }
-
-        } catch (Exception e) {
-            logger.error("Failed to verify phone number for user: {}", user.getPhoneNumber(), e);
+        if (isPhoneValid) {
+            logger.info("User created with valid phone number: {}", user.getPhoneNumber());
+        } else {
+            logger.warn("User created with invalid phone number: {}", user.getPhoneNumber());
         }
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
@@ -93,5 +93,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean isUser(UserEntity user) {
         return hasRole(user, "USER");
+    }
+
+    private String getUserIdFromContext() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.isAuthenticated()) {
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof UserDetails) {
+                UserDetails userDetails = (UserDetails) principal;
+                return userDetails.getUsername();
+            }
+        }
+        throw new IllegalStateException("User is not authenticated");
     }
 }

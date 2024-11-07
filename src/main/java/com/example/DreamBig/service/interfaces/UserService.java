@@ -4,7 +4,7 @@ import com.example.DreamBig.entity.UserEntity;
 import java.util.List;
 
 public interface UserService {
-    UserEntity createUser(UserEntity user);
+    UserEntity createUser(UserEntity user) throws Exception;
     UserEntity getUserById(Long id);
     List<UserEntity> getAllUsers();
     UserEntity updateUser(UserEntity user);

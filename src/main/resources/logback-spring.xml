@@ -16,4 +16,6 @@
         <appender-ref ref="CUSTOM_CONSOLE"/>
         <appender-ref ref="FILE"/>
     </root>
+
+    <logger name="com.example.DreamBig.aspect" level="INFO" />
 </configuration>
