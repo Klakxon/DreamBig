@@ -35,13 +35,12 @@ public class AuthController {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword())
             );
-            // Генеруємо токен після успішної аутентифікації
             String token = jwtUtil.generateToken(loginRequest);
             model.addAttribute("token", token);
-            return "home"; // перенаправлення до домашньої сторінки
+            return "home";
         } catch (AuthenticationException e) {
             model.addAttribute("error", "Invalid email or password!");
-            return "login"; // повернення на сторінку логіну з помилкою
+            return "login";
         }
     }
 

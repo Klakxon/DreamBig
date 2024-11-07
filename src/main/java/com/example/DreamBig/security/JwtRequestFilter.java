@@ -30,40 +30,35 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         String authorizationHeader = request.getHeader("Authorization");
 
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-            String token = authorizationHeader.substring(7); // Витягування токена з заголовку
+            String token = authorizationHeader.substring(7);
 
             if (jwtUtil.validateToken(token)) {
                 Claims claims = jwtUtil.extractAllClaims(token);
 
-                // Перевірка на тип привілеїв перед їх перетворенням
                 Object privilegesObj = claims.get("privileges");
                 Set<String> privileges = null;
 
-                // Якщо привілеї присутні і мають тип Set, то перетворюємо
                 if (privilegesObj instanceof Set<?>) {
                     privileges = (Set<String>) privilegesObj;
                 }
 
-                // Якщо привілеї є і правильно перетворені, створюємо CustomUserDetails
                 if (privileges != null) {
                     UserDetails userDetails = new CustomUserDetails(
-                            claims.getSubject(), // email
-                            null, // передаємо null для пароля
-                            claims.get("role").toString(), // роль користувача
-                            privileges // список привілеїв
+                            claims.getSubject(),
+                            null,
+                            claims.get("role").toString(),
+                            privileges
                     );
 
-                    // Створення токену аутентифікації та додавання його в контекст
                     UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                             userDetails, null, userDetails.getAuthorities()
                     );
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 } else {
-                    // Якщо привілеї відсутні або не правильного типу, логування помилки
                     System.out.println("Привілеї не знайдено або мають невірний тип.");
                 }
             }
         }
-        chain.doFilter(request, response); // Продовжуємо обробку запиту
+        chain.doFilter(request, response);
     }
 }

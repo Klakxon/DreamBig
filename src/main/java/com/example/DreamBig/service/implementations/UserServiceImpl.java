@@ -35,7 +35,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity createUser(UserEntity user) throws Exception {
-        // Логіка без обробки виключень вручну, буде перехоплено аспектом
         boolean isPhoneValid = phoneVerificationService.verifyPhoneNumber(user.getPhoneNumber());
         user.setPhoneNumberValid(isPhoneValid);
 

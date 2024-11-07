@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AppConfigIntegrationTest {
 
     @Autowired
-    private GreetingService greetingService;  // Замість конкретного типу можна використовувати інтерфейс
+    private GreetingService greetingService;
 
     @Value("${country:Default}")
     private String country;
@@ -26,7 +26,6 @@ public class AppConfigIntegrationTest {
 
     @Test
     public void whenCountryIsUkraine_thenGreetingIsFromUkraine() {
-        // Якщо країна "Ukraine", повинно бути українське привітання
         if ("Ukraine".equals(country)) {
             assertThat(greetingService.greet()).isEqualTo("Слава Україні! Ласкаво просимо у додаток мережі спортклубів DreamBig!");
         } else {

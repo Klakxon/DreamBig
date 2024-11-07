@@ -48,10 +48,9 @@ public class PriceControllerTest {
 
         when(discountService.calculateDiscountedPrice(originalPrice)).thenReturn(discountedPrice);
 
-        // Додамо перевірку з округленням, щоб уникнути неточностей із плаваючою комою
         mockMvc.perform(get("/calculate-final-price")
                         .param("subscriptionLength", String.valueOf(subscriptionLength))
-                        .with(user("admin").password("password").roles("ADMIN"))) // Додати ролі
+                        .with(user("admin").password("password").roles("ADMIN")))
                 .andExpect(status().isOk())
                 .andExpect(content().string(String.valueOf(discountedPrice)));
 

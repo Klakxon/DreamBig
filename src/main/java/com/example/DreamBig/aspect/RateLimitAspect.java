@@ -26,7 +26,7 @@ public class RateLimitAspect {
 
     @Around("serviceMethods()")
     public Object rateLimit(ProceedingJoinPoint joinPoint) throws Throwable {
-        String userId = getUserIdFromContext(); // Тут має бути метод для отримання ID користувача
+        String userId = getUserIdFromContext();
         long currentTime = System.currentTimeMillis();
         Long lastRequestTime = userLastRequestTime.get(userId);
 

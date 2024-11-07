@@ -1,6 +1,3 @@
-/* static/css/profile.css */
-
-/* Стилі для body */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -10,31 +7,31 @@ body {
 }
 
 h1 {
-    text-align: center; /* Центруємо заголовок */
+    text-align: center;
     padding: 20px;
     background-color: #2c3e50;
     color: white;
-    margin-top: 50px; /* Відступ зверху */
+    margin-top: 50px;
 }
 
 .container {
     max-width: 800px;
     margin: 30px auto;
     padding: 20px;
-    background-color: white; /* Білий фон для контейнера форми */
+    background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    align-items: center; /* Центруємо вміст контейнера */
+    align-items: center;
 }
 
 .profile-info {
     width: 100%;
-    text-align: left; /* Вирівнюємо текст ліворуч */
-    padding-left: 20px; /* Відступ зліва */
-    margin-bottom: 20px; /* Відступ між блоками */
-    background-color: transparent; /* Видаляємо білий фон */
+    text-align: left;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    background-color: transparent;
 }
 
 form {
@@ -42,7 +39,7 @@ form {
     flex-direction: column;
     gap: 0px;
     width: 100%;
-    padding: 0 20px; /* Додаємо відступи зліва та справа */
+    padding: 0 20px;
 }
 
 label {
@@ -56,7 +53,7 @@ input[type="text"] {
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
-    box-sizing: border-box; /* Включає відступи в ширину */
+    box-sizing: border-box;
 }
 
 button {
@@ -73,7 +70,6 @@ button:hover {
     background-color: #2980b9;
 }
 
-/* Додаємо фон */
 .background-image {
     background-image: url('/images/hero_background.jpg');
     background-size: cover;
@@ -92,7 +88,6 @@ h1 {
     border-radius: 5px;
 }
 
-/* Стилі для header (шапка) */
 header {
     display: flex;
     align-items: center;
@@ -103,7 +98,7 @@ header {
 
 header .logo img {
     max-width: 80px;
-    height: auto; /* Зберігає пропорції зображення */
+    height: auto;
 }
 
 header nav ul {
@@ -123,7 +118,6 @@ header nav ul li a {
     font-weight: bold;
 }
 
-/* Стилі для сторінки профілю */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
@@ -133,7 +127,7 @@ body {
 }
 
 .background-image {
-    background-color: #f4f4f9; /* Якщо фон не зображення */
+    background-color: #f4f4f9;
     padding: 20px;
 }
 

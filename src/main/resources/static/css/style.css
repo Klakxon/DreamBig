@@ -16,7 +16,7 @@ header {
 
 header .logo img {
     max-width: 80px;
-    height: auto; /* Зберігає пропорції зображення */
+    height: auto;
 }
 
 header nav ul {
@@ -44,11 +44,11 @@ header nav ul li a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px; /* Відступи між елементами */
+    gap: 15px;
 }
 
 .hero h1, .hero p {
-    background-color: rgba(0, 0, 0, 0.5); /* Напівпрозорий чорний фон */
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 10px 15px;
     border-radius: 5px;
 }
@@ -91,9 +91,9 @@ header nav ul li a {
 }
 
 .services .service-list .service-item img {
-    width: 100%; /* Зменшує картинку до 100% ширини контейнера */
-    max-width: 300px; /* Максимальна ширина картинки */
-    height: auto; /* Автоматична висота для збереження пропорцій */
+    width: 100%;
+    max-width: 300px;
+    height: auto;
 }
 
 .contact-info {
@@ -116,7 +116,6 @@ footer {
     margin: 0 10px;
 }
 
-/* Login Page */
 .profile-header {
     text-align: center;
     padding: 1em;

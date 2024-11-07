@@ -34,25 +34,25 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .headers(headers -> headers.frameOptions().sameOrigin()) // Дозвіл для H2-консолі
+                .headers(headers -> headers.frameOptions().sameOrigin())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/h2-console/**").permitAll()
-                        .requestMatchers("/home", "/profile", "/profile/*", "/login").permitAll()  // Доступні всім
-                        .requestMatchers("/admin").hasRole("ADMIN")  // Доступні тільки адміністраторам
+                        .requestMatchers("/home", "/profile", "/profile/*", "/login").permitAll()
+                        .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/static/**", "/images/**", "/css/**", "/js/**").permitAll()
                         .requestMatchers("/api/session/arrange").hasRole("TRAINER")
                         .requestMatchers("/api/session/visit").hasRole("USER")
                         .requestMatchers("/api/secret").hasRole("ADMIN")
-                        .anyRequest().authenticated()  // Всі інші запити вимагають аутентифікації
+                        .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
-                        .usernameParameter("email")  // Замість стандартного параметра "username"
+                        .usernameParameter("email")
                         .defaultSuccessUrl("/home", true)
                         .permitAll()
                 )
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));  // Без стану (JWT)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         http.exceptionHandling().authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
 

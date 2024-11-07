@@ -18,7 +18,7 @@ public class PriceController {
     }
 
     @GetMapping("/calculate-final-price")
-    @PreAuthorize("hasRole('USER')")  // Тільки для користувачів з певною роллю
+    @PreAuthorize("hasRole('USER')")
     public double calculateFinalPrice(@RequestParam int subscriptionLength) {
         double originalPrice = priceService.calculateTotalPrice(subscriptionLength);
         return discountService.calculateDiscountedPrice(originalPrice);

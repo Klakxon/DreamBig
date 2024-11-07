@@ -21,7 +21,7 @@ public class TestSecurityConfig {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .requestMatchers("/calculate-final-price").permitAll() // Дозволити доступ до цього URL без аутентифікації
+                .requestMatchers("/calculate-final-price").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
