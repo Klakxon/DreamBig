@@ -1,7 +1,6 @@
 package com.example.DreamBig;
 
 import com.example.DreamBig.entity.UserEntity;
-import com.example.DreamBig.model.User;
 import com.example.DreamBig.repository.UserRepository;
 import com.example.DreamBig.service.implementations.ValidationServiceImpl;
 import com.example.DreamBig.service.interfaces.ValidationService;
@@ -9,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
+@EnableScheduling
+@EnableCaching
 public class DreamBigApplication implements CommandLineRunner {
 
 	@Autowired

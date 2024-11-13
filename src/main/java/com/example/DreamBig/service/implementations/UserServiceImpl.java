@@ -4,6 +4,9 @@ import com.example.DreamBig.entity.UserEntity;
 import com.example.DreamBig.repository.UserRepository;
 import com.example.DreamBig.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,8 +35,8 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
-
     @Override
+    @CachePut(value = "users", key = "#user.id")
     public UserEntity createUser(UserEntity user) throws Exception {
         boolean isPhoneValid = phoneVerificationService.verifyPhoneNumber(user.getPhoneNumber());
         user.setPhoneNumberValid(isPhoneValid);
@@ -49,21 +52,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Cacheable(value = "users", key = "#id")
     public UserEntity getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
     @Override
+    @Cacheable(value = "users", key = "'allUsers'")
     public List<UserEntity> getAllUsers() {
         return userRepository.findAll();
     }
 
     @Override
+    @CachePut(value = "users", key = "#user.id")
     public UserEntity updateUser(UserEntity user) {
         return userRepository.save(user);
     }
 
     @Override
+    @CacheEvict(value = "users", key = "#id")
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
