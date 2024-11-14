@@ -14,6 +14,4 @@ public interface SubscriptionRepository extends JpaRepository<SubscriptionEntity
     @Modifying
     @Query("DELETE FROM SubscriptionEntity s WHERE s.type = 'Temporary' AND s.isActive = false")
     int deleteInactiveTemporarySubscriptions();
-
 }
-

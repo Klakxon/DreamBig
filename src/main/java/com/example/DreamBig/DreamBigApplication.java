@@ -22,7 +22,7 @@ public class DreamBigApplication implements CommandLineRunner {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	private ValidationService validationService = new ValidationServiceImpl(); // Використовуємо реальний екземпляр для валідації
+	private ValidationService validationService = new ValidationServiceImpl();
 
 	public static void main(String[] args) {
 		SpringApplication.run(DreamBigApplication.class, args);
@@ -30,9 +30,7 @@ public class DreamBigApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// Перевірка чи існують користувачі в базі даних
 		if (userRepository.count() == 0) {
-			// Створення користувачів з відповідними ролями
 			createDefaultUser(1L, "adminPassword", "ADMIN", "Administrator", "+380123456789", "admin@example.com");
 			createDefaultUser(2L, "userPassword", "USER", "John Doe", "+380987654321", "user@example.com");
 
@@ -41,7 +39,6 @@ public class DreamBigApplication implements CommandLineRunner {
 	}
 
 	private void createDefaultUser(Long userId, String password, String role, String fullName, String phoneNumber, String email) {
-		// Перевірка валідності телефонного номера та email
 		if (!validationService.isValidPhoneNumber(phoneNumber)) {
 			throw new IllegalArgumentException("Invalid phone number format");
 		}
@@ -49,7 +46,6 @@ public class DreamBigApplication implements CommandLineRunner {
 			throw new IllegalArgumentException("Invalid email format");
 		}
 
-		// Створення користувача
 		UserEntity user = new UserEntity();
 		user.setId(userId);
 		user.setRole(role);
@@ -57,7 +53,6 @@ public class DreamBigApplication implements CommandLineRunner {
 		user.setPassword(passwordEncoder.encode(password));
 		user.setFullName(fullName);
 
-		// Збереження користувача в базу
 		userRepository.save(user);
 	}
 }

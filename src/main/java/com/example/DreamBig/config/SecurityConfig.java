@@ -43,6 +43,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/session/arrange").hasRole("TRAINER")
                         .requestMatchers("/api/session/visit").hasRole("USER")
                         .requestMatchers("/api/secret").hasRole("ADMIN")
+                        .requestMatchers("/api/users", "api/users/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

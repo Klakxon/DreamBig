@@ -5,6 +5,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -63,4 +64,14 @@ public class RateLimitAspect {
         throw new IllegalStateException("User is not authenticated");
     }
 
+    @Scheduled(fixedRate = 5 * 60 * 1000)
+    public void clean() {
+        long currentTime = System.currentTimeMillis();
+        userLastRequestTime.keySet().removeIf(userId ->
+                currentTime - userLastRequestTime.get(userId) > TIME_WINDOW
+        );
+        userRequestCount.keySet().removeIf(userId ->
+                !userLastRequestTime.containsKey(userId)
+        );
+    }
 }
