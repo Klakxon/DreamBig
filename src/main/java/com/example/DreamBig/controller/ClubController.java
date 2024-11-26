@@ -1,5 +1,5 @@
 package com.example.DreamBig.controller;
-import com.example.DreamBig.dto.ClubDTO;
+import com.example.DreamBig.entity.Club;
 import com.example.DreamBig.exception.InvalidInputException;
 import com.example.DreamBig.exception.ResourceNotFoundException;
 import jakarta.validation.Valid;
@@ -14,15 +14,15 @@ import java.util.List;
 @RequestMapping("/api/clubs")
 public class ClubController {
 
-    private List<ClubDTO> clubs = new ArrayList<>();
+    private List<Club> clubs = new ArrayList<>();
 
     @GetMapping
-    public List<ClubDTO> getAllClubs() {
+    public List<Club> getAllClubs() {
         return clubs;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ClubDTO> getClubById(@PathVariable Long id) {
+    public ResponseEntity<Club> getClubById(@PathVariable Long id) {
         return clubs.stream()
                 .filter(club -> club.getId().equals(id))
                 .findFirst()
@@ -31,17 +31,17 @@ public class ClubController {
     }
 
     @PostMapping
-    public ResponseEntity<ClubDTO> createClub(@Valid @RequestBody ClubDTO clubDTO) {
-        if (clubDTO.getName() == null || clubDTO.getName().isEmpty()) {
+    public ResponseEntity<Club> createClub(@Valid @RequestBody Club club) {
+        if (club.getName() == null || club.getName().isEmpty()) {
             throw new InvalidInputException("Club name cannot be empty");
         }
-        clubs.add(clubDTO);
-        return new ResponseEntity<>(clubDTO, HttpStatus.CREATED);
+        clubs.add(club);
+        return new ResponseEntity<>(club, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ClubDTO> updateClub(@PathVariable Long id, @Valid @RequestBody ClubDTO updatedClub) {
-        for (ClubDTO club : clubs) {
+    public ResponseEntity<Club> updateClub(@PathVariable Long id, @Valid @RequestBody Club updatedClub) {
+        for (Club club : clubs) {
             if (club.getId().equals(id)) {
                 club.setName(updatedClub.getName());
                 club.setAddress(updatedClub.getAddress());

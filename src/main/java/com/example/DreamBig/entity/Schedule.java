@@ -1,15 +1,24 @@
-package com.example.DreamBig.model;
+package com.example.DreamBig.entity;
+
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Розклад занять
- */
+@Entity
+@Table(name = "schedules")
 public class Schedule {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String date;
+
+    @OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL)
     private List<Session> sessions;
+
+    public Schedule() {}
 
     public Schedule(Long id, String date) {
         if (date == null || date.isEmpty()) {
@@ -42,4 +51,9 @@ public class Schedule {
     public List<Session> getSessions() {
         return sessions;
     }
+
+    public void setSessions(List<Session> sessions) {
+        this.sessions = sessions;
+    }
 }
+

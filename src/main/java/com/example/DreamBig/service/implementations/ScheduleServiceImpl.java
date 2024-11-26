@@ -1,6 +1,6 @@
 package com.example.DreamBig.service.implementations;
 
-import com.example.DreamBig.entity.ScheduleEntity;
+import com.example.DreamBig.entity.Schedule;
 import com.example.DreamBig.repository.ScheduleRepository;
 import com.example.DreamBig.service.interfaces.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,25 +19,25 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     @Cacheable(value = "schedules", key = "#id")
-    public ScheduleEntity getScheduleById(Long id) {
+    public Schedule getScheduleById(Long id) {
         return scheduleRepository.findById(id).orElse(null);
     }
 
     @Override
     @Cacheable(value = "schedules", key = "'allSchedules'")
-    public List<ScheduleEntity> getAllSchedules() {
+    public List<Schedule> getAllSchedules() {
         return scheduleRepository.findAll();
     }
 
     @Override
     @CachePut(value = "schedules", key = "#schedule.id")
-    public ScheduleEntity createSchedule(ScheduleEntity schedule) {
+    public Schedule createSchedule(Schedule schedule) {
         return scheduleRepository.save(schedule);
     }
 
     @Override
     @CachePut(value = "schedules", key = "#schedule.id")
-    public ScheduleEntity updateSchedule(ScheduleEntity schedule) {
+    public Schedule updateSchedule(Schedule schedule) {
         return scheduleRepository.save(schedule);
     }
 

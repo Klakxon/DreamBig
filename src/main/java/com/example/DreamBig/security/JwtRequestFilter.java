@@ -1,6 +1,6 @@
 package com.example.DreamBig.security;
 
-import com.example.DreamBig.model.CustomUserDetails;
+import com.example.DreamBig.userDetails.CustomUserDetails;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -27,36 +27,29 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
-        String authorizationHeader = request.getHeader("Authorization");
+        String requestURI = request.getRequestURI();
 
+        if (requestURI.startsWith("/h2-console")) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        String authorizationHeader = request.getHeader("Authorization");
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             String token = authorizationHeader.substring(7);
-
             if (jwtUtil.validateToken(token)) {
                 Claims claims = jwtUtil.extractAllClaims(token);
+                UserDetails userDetails = new CustomUserDetails(
+                        claims.getSubject(),
+                        null,
+                        claims.get("role").toString(),
+                        (Set<String>) claims.get("privileges")
+                );
 
-                Object privilegesObj = claims.get("privileges");
-                Set<String> privileges = null;
-
-                if (privilegesObj instanceof Set<?>) {
-                    privileges = (Set<String>) privilegesObj;
-                }
-
-                if (privileges != null) {
-                    UserDetails userDetails = new CustomUserDetails(
-                            claims.getSubject(),
-                            null,
-                            claims.get("role").toString(),
-                            privileges
-                    );
-
-                    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                            userDetails, null, userDetails.getAuthorities()
-                    );
-                    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-                } else {
-                    System.out.println("Привілеї не знайдено або мають невірний тип.");
-                }
+                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+                        userDetails, null, userDetails.getAuthorities()
+                );
+                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }
         }
         chain.doFilter(request, response);

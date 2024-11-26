@@ -1,6 +1,6 @@
 package com.example.DreamBig.service.implementations;
 
-import com.example.DreamBig.entity.ClubEntity;
+import com.example.DreamBig.entity.Club;
 import com.example.DreamBig.repository.ClubRepository;
 import com.example.DreamBig.service.interfaces.ClubService;
 import jakarta.persistence.EntityNotFoundException;
@@ -23,26 +23,26 @@ public class ClubServiceImpl implements ClubService {
     }
 
     @Override
-    public List<ClubEntity> getAllClubs() {
+    public List<Club> getAllClubs() {
         return clubRepository.findAll();
     }
 
     @Override
     @Cacheable(value = "clubs", key = "#id")
-    public ClubEntity getClubById(Long id) {
+    public Club getClubById(Long id) {
         return clubRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Club not found with id " + id));
     }
 
     @Override
     @CachePut(value = "clubs", key = "#club.id")
-    public ClubEntity createClub(ClubEntity club) {
+    public Club createClub(Club club) {
         return clubRepository.save(club);
     }
 
     @Override
     @CachePut(value = "clubs", key = "#id")
-    public ClubEntity updateClub(Long id, ClubEntity updatedClub) {
+    public Club updateClub(Long id, Club updatedClub) {
         return clubRepository.findById(id)
                 .map(club -> {
                     club.setName(updatedClub.getName());

@@ -1,18 +1,18 @@
 package com.example.DreamBig.service.interfaces;
 
-import com.example.DreamBig.entity.ClubEntity;
+import com.example.DreamBig.entity.Club;
 
 import java.util.List;
 
 public interface ClubService {
 
-    List<ClubEntity> getAllClubs();
+    List<Club> getAllClubs();
 
-    ClubEntity getClubById(Long id);
+    Club getClubById(Long id);
 
-    ClubEntity createClub(ClubEntity club);
+    Club createClub(Club club);
 
-    ClubEntity updateClub(Long id, ClubEntity updatedClub);
+    Club updateClub(Long id, Club updatedClub);
 
     void deleteClub(Long id);
 }

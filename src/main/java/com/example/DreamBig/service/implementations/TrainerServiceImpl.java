@@ -1,6 +1,6 @@
 package com.example.DreamBig.service.implementations;
 
-import com.example.DreamBig.entity.TrainerEntity;
+import com.example.DreamBig.entity.Trainer;
 import com.example.DreamBig.repository.TrainerRepository;
 import com.example.DreamBig.service.interfaces.SessionService;
 import com.example.DreamBig.service.interfaces.TrainerService;
@@ -22,25 +22,25 @@ public class TrainerServiceImpl implements TrainerService {
 
     @Override
     @Cacheable(value = "trainers", key = "#id")
-    public TrainerEntity getTrainerById(Long id) {
+    public Trainer getTrainerById(Long id) {
         return trainerRepository.findById(id).orElse(null);
     }
 
     @Override
     @Cacheable(value = "trainers", key = "'allTrainers'")
-    public List<TrainerEntity> getAllTrainers() {
+    public List<Trainer> getAllTrainers() {
         return trainerRepository.findAll();
     }
 
     @Override
     @CachePut(value = "trainers", key = "#trainer.id")
-    public TrainerEntity createTrainer(TrainerEntity trainer) {
+    public Trainer createTrainer(Trainer trainer) {
         return trainerRepository.save(trainer);
     }
 
     @Override
     @CachePut(value = "trainers", key = "#trainer.id")
-    public TrainerEntity updateTrainer(TrainerEntity trainer) {
+    public Trainer updateTrainer(Trainer trainer) {
         return trainerRepository.save(trainer);
     }
 

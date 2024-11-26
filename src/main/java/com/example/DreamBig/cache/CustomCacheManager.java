@@ -3,6 +3,7 @@ package com.example.DreamBig.cache;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.support.SimpleValueWrapper;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -11,6 +12,7 @@ import java.util.Map;
 import java.util.concurrent.Callable;
 
 @Component
+@Primary
 public class CustomCacheManager implements CacheManager {
 
     private final Map<String, CustomCache> cacheMap = new HashMap<>();
@@ -26,7 +28,7 @@ public class CustomCacheManager implements CacheManager {
         return cacheMap.keySet();
     }
 
-    private class CustomCache implements Cache {
+    private static class CustomCache implements Cache {
 
         private final String name;
         private final Map<Object, Object> store;
@@ -92,6 +94,4 @@ public class CustomCacheManager implements CacheManager {
             store.clear();
         }
     }
-
-
 }

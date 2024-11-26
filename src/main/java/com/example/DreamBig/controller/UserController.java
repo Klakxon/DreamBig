@@ -1,7 +1,6 @@
 package com.example.DreamBig.controller;
 
-import com.example.DreamBig.dto.UserDTO;
-import com.example.DreamBig.exception.InvalidInputException;
+import com.example.DreamBig.entity.User;
 import com.example.DreamBig.exception.ResourceNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -15,15 +14,15 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
 
-    private List<UserDTO> users = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
     @GetMapping
-    public List<UserDTO> getAllUsers() {
+    public List<User> getAllUsers() {
         return users;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
         return users.stream()
                 .filter(user -> user.getId().equals(id))
                 .findFirst()
@@ -32,14 +31,14 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserDTO userDTO) {
-        users.add(userDTO);
-        return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
+        users.add(user);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @Valid @RequestBody UserDTO updatedUser) {
-        for (UserDTO user : users) {
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @Valid @RequestBody User updatedUser) {
+        for (User user : users) {
             if (user.getId().equals(id)) {
                 user.setFullName(updatedUser.getFullName());
                 user.setPhoneNumber(updatedUser.getPhoneNumber());

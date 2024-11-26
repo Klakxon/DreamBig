@@ -1,6 +1,6 @@
 package com.example.DreamBig.service.implementations;
 
-import com.example.DreamBig.entity.SessionEntity;
+import com.example.DreamBig.entity.Session;
 import com.example.DreamBig.repository.SessionRepository;
 import com.example.DreamBig.service.interfaces.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,25 +19,25 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     @Cacheable(value = "sessions", key = "#id")
-    public SessionEntity getSessionById(Long id) {
+    public Session getSessionById(Long id) {
         return sessionRepository.findById(id).orElse(null);
     }
 
     @Override
     @Cacheable(value = "sessions", key = "'allSessions'")
-    public List<SessionEntity> getAllSessions() {
+    public List<Session> getAllSessions() {
         return sessionRepository.findAll();
     }
 
     @Override
     @CachePut(value = "sessions", key = "#session.id")
-    public SessionEntity createSession(SessionEntity session) {
+    public Session createSession(Session session) {
         return sessionRepository.save(session);
     }
 
     @Override
     @CachePut(value = "sessions", key = "#session.id")
-    public SessionEntity updateSession(SessionEntity session) {
+    public Session updateSession(Session session) {
         return sessionRepository.save(session);
     }
 

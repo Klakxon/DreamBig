@@ -1,17 +1,43 @@
-package com.example.DreamBig.model;
+package com.example.DreamBig.entity;
+
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Тренування в спортивному клубі
- */
+@Entity
+@Table(name = "sessions")
 public class Session {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String sessionType;
+
     private String dateTime;
+
+    @ManyToOne
+    @JoinColumn(name = "trainer_id", nullable = false)
     private Trainer trainer;
+
+    @ManyToMany
+    @JoinTable(
+            name = "session_participants",
+            joinColumns = @JoinColumn(name = "session_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private List<User> participants;
+
+    @ManyToOne
+    @JoinColumn(name = "schedule_id", nullable = false)
+    private Schedule schedule;
+
+    @ManyToOne
+    @JoinColumn(name = "club_id", nullable = false)
+    private Club club;
+
+    public Session() {}
 
     public Session(Long id, String sessionType, String dateTime, Trainer trainer) {
         if (sessionType == null || sessionType.isEmpty()) {
@@ -75,4 +101,25 @@ public class Session {
     public List<User> getParticipants() {
         return participants;
     }
+
+    public void setParticipants(List<User> participants) {
+        this.participants = participants;
+    }
+
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
+    }
+
+    public Club getClub() {
+        return club;
+    }
+
+    public void setClub(Club club) {
+        this.club = club;
+    }
 }
+

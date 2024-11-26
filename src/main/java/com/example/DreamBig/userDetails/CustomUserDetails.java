@@ -1,6 +1,5 @@
-package com.example.DreamBig.model;
+package com.example.DreamBig.userDetails;
 
-import com.example.DreamBig.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,21 +14,12 @@ public class CustomUserDetails implements UserDetails {
     private final String role;
     private final Set<String> privileges;
     private final String password;
-    private UserEntity userEntity;
 
     public CustomUserDetails(String email, String password, String role, Set<String> privileges) {
         this.email = email;
         this.password = password;
         this.role = role;
         this.privileges = privileges;
-    }
-
-    public CustomUserDetails(UserEntity userEntity) {
-        this.userEntity = userEntity;
-        this.email = userEntity.getEmail();
-        this.password = userEntity.getPassword();
-        this.role = userEntity.getRole();
-        this.privileges = null;
     }
 
     @Override
@@ -70,9 +60,5 @@ public class CustomUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public Long getUserId() {
-        return userEntity.getId();
     }
 }

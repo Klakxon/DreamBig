@@ -1,18 +1,18 @@
 package com.example.DreamBig.service.interfaces;
 
-import com.example.DreamBig.entity.UserEntity;
+import com.example.DreamBig.entity.User;
 import java.util.List;
 
 public interface UserService {
-    UserEntity createUser(UserEntity user) throws Exception;
-    UserEntity getUserById(Long id);
-    List<UserEntity> getAllUsers();
-    UserEntity updateUser(UserEntity user);
+    User createUser(User user) throws Exception;
+    User getUserById(Long id);
+    List<User> getAllUsers();
+    User updateUser(User user);
     void deleteUser(Long id);
 
-    boolean hasRole(UserEntity user, String role);
-    void assignRole(UserEntity user, String role);
-    boolean isAdmin(UserEntity user);
-    boolean isTrainer(UserEntity user);
-    boolean isUser(UserEntity user);
+    boolean hasRole(User user, String role);
+    void assignRole(User user, String role);
+    boolean isAdmin(User user);
+    boolean isTrainer(User user);
+    boolean isUser(User user);
 }

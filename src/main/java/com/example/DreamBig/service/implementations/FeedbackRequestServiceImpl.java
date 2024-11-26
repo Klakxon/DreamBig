@@ -1,6 +1,6 @@
 package com.example.DreamBig.service.implementations;
 
-import com.example.DreamBig.entity.FeedbackRequestEntity;
+import com.example.DreamBig.entity.FeedbackRequest;
 import com.example.DreamBig.repository.FeedbackRequestRepository;
 import com.example.DreamBig.service.interfaces.FeedbackRequestService;
 import jakarta.persistence.EntityNotFoundException;
@@ -24,26 +24,26 @@ public class FeedbackRequestServiceImpl implements FeedbackRequestService {
 
     @Override
     @Cacheable(value = "feedbackRequests", key = "#id")
-    public FeedbackRequestEntity getFeedbackRequestById(Long id) {
+    public FeedbackRequest getFeedbackRequestById(Long id) {
         return feedbackRequestRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Feedback request not found with id " + id));
     }
 
     @Override
     @Cacheable(value = "feedbackRequests", key = "'allRequests'")
-    public List<FeedbackRequestEntity> getAllFeedbackRequests() {
+    public List<FeedbackRequest> getAllFeedbackRequests() {
         return feedbackRequestRepository.findAll();
     }
 
     @Override
     @CachePut(value = "feedbackRequests", key = "#feedbackRequest.id")
-    public FeedbackRequestEntity createFeedbackRequest(FeedbackRequestEntity feedbackRequest) {
+    public FeedbackRequest createFeedbackRequest(FeedbackRequest feedbackRequest) {
         return feedbackRequestRepository.save(feedbackRequest);
     }
 
     @Override
     @CachePut(value = "feedbackRequests", key = "#id")
-    public FeedbackRequestEntity updateFeedbackRequest(Long id, FeedbackRequestEntity updatedRequest) {
+    public FeedbackRequest updateFeedbackRequest(Long id, FeedbackRequest updatedRequest) {
         return feedbackRequestRepository.findById(id)
                 .map(request -> {
                     request.setPhoneNumber(updatedRequest.getPhoneNumber());

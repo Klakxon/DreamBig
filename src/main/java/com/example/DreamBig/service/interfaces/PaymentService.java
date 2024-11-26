@@ -1,12 +1,12 @@
 package com.example.DreamBig.service.interfaces;
 
-import com.example.DreamBig.entity.PaymentEntity;
+import com.example.DreamBig.entity.Payment;
 import java.util.List;
 
 public interface PaymentService {
-    PaymentEntity createPayment(PaymentEntity payment);
-    PaymentEntity getPaymentById(Long id);
-    List<PaymentEntity> getAllPayments();
-    PaymentEntity updatePayment(PaymentEntity payment);
+    Payment createPayment(Payment payment);
+    Payment getPaymentById(Long id);
+    List<Payment> getAllPayments();
+    Payment updatePayment(Payment payment);
     void deletePayment(Long id);
 }

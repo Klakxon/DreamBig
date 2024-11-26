@@ -1,18 +1,18 @@
 package com.example.DreamBig.service.interfaces;
 
-import com.example.DreamBig.entity.FeedbackRequestEntity;
+import com.example.DreamBig.entity.FeedbackRequest;
 
 import java.util.List;
 
 public interface FeedbackRequestService {
 
-    List<FeedbackRequestEntity> getAllFeedbackRequests();
+    List<FeedbackRequest> getAllFeedbackRequests();
 
-    FeedbackRequestEntity getFeedbackRequestById(Long id);
+    FeedbackRequest getFeedbackRequestById(Long id);
 
-    FeedbackRequestEntity createFeedbackRequest(FeedbackRequestEntity feedbackRequest);
+    FeedbackRequest createFeedbackRequest(FeedbackRequest feedbackRequest);
 
-    FeedbackRequestEntity updateFeedbackRequest(Long id, FeedbackRequestEntity updatedRequest);
+    FeedbackRequest updateFeedbackRequest(Long id, FeedbackRequest updatedRequest);
 
     void deleteFeedbackRequest(Long id);
 }

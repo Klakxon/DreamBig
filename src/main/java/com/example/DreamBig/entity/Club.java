@@ -1,11 +1,13 @@
 package com.example.DreamBig.entity;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "clubs")
-public class ClubEntity {
+public class Club {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,12 +23,32 @@ public class ClubEntity {
 
     private boolean hasCardioZone;
 
+    @OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
+    private List<Trainer> trainers;
 
     @OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
-    private List<TrainerEntity> trainers;
+    private List<Session> sessions;
 
-    @OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
-    private List<SessionEntity> sessions;
+
+    public Club() {}
+
+    public Club(Long id, String name, String address, boolean hasPool, boolean hasGym, boolean hasCardioZone) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Club name cannot be empty");
+        }
+        if (address == null || address.isEmpty()) {
+            throw new IllegalArgumentException("Club address cannot be empty");
+        }
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.hasPool = hasPool;
+        this.hasGym = hasGym;
+        this.hasCardioZone = hasCardioZone;
+        this.trainers = new ArrayList<>();
+        this.sessions = new ArrayList<>();
+    }
+
 
     public Long getId() {
         return id;
@@ -41,6 +63,9 @@ public class ClubEntity {
     }
 
     public void setName(String name) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Club name cannot be empty");
+        }
         this.name = name;
     }
 
@@ -49,6 +74,9 @@ public class ClubEntity {
     }
 
     public void setAddress(String address) {
+        if (address == null || address.isEmpty()) {
+            throw new IllegalArgumentException("Club address cannot be empty");
+        }
         this.address = address;
     }
 
@@ -76,19 +104,19 @@ public class ClubEntity {
         this.hasCardioZone = hasCardioZone;
     }
 
-    public List<TrainerEntity> getTrainers() {
+    public List<Trainer> getTrainers() {
         return trainers;
     }
 
-    public void setTrainers(List<TrainerEntity> trainers) {
+    public void setTrainers(List<Trainer> trainers) {
         this.trainers = trainers;
     }
 
-    public List<SessionEntity> getSessions() {
+    public List<Session> getSessions() {
         return sessions;
     }
 
-    public void setSessions(List<SessionEntity> sessions) {
+    public void setSessions(List<Session> sessions) {
         this.sessions = sessions;
     }
 }

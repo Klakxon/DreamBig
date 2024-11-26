@@ -1,6 +1,6 @@
 package com.example.DreamBig.controller;
 
-import com.example.DreamBig.dto.PaymentDTO;
+import com.example.DreamBig.entity.Payment;
 import com.example.DreamBig.exception.InvalidInputException;
 import com.example.DreamBig.exception.ResourceNotFoundException;
 import jakarta.validation.Valid;
@@ -15,15 +15,15 @@ import java.util.List;
 @RequestMapping("/api/payments")
 public class PaymentController {
 
-    private List<PaymentDTO> payments = new ArrayList<>();
+    private List<Payment> payments = new ArrayList<>();
 
     @GetMapping
-    public List<PaymentDTO> getAllPayments() {
+    public List<Payment> getAllPayments() {
         return payments;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PaymentDTO> getPaymentById(@PathVariable Long id) {
+    public ResponseEntity<Payment> getPaymentById(@PathVariable Long id) {
         return payments.stream()
                 .filter(payment -> payment.getId().equals(id))
                 .findFirst()
@@ -32,7 +32,7 @@ public class PaymentController {
     }
 
     @PostMapping
-    public ResponseEntity<PaymentDTO> createPayment(@Valid @RequestBody PaymentDTO paymentDTO) {
+    public ResponseEntity<Payment> createPayment(@Valid @RequestBody Payment paymentDTO) {
         if (paymentDTO.getAmount() == null || paymentDTO.getAmount() <= 0) {
             throw new InvalidInputException("Amount must be positive");
         }
@@ -44,12 +44,12 @@ public class PaymentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PaymentDTO> updatePayment(@PathVariable Long id, @Valid @RequestBody PaymentDTO updatedPayment) {
-        for (PaymentDTO payment : payments) {
+    public ResponseEntity<Payment> updatePayment(@PathVariable Long id, @Valid @RequestBody Payment updatedPayment) {
+        for (Payment payment : payments) {
             if (payment.getId().equals(id)) {
                 payment.setAmount(updatedPayment.getAmount());
                 payment.setStatus(updatedPayment.getStatus());
-                payment.setUserId(updatedPayment.getUserId());
+                payment.setId(updatedPayment.getId());
                 payment.setDate(updatedPayment.getDate());
                 return new ResponseEntity<>(payment, HttpStatus.OK);
             }

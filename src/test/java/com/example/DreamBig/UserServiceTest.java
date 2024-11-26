@@ -1,6 +1,6 @@
 package com.example.DreamBig;
 
-import com.example.DreamBig.entity.UserEntity;
+import com.example.DreamBig.entity.User;
 import com.example.DreamBig.repository.UserRepository;
 import com.example.DreamBig.service.implementations.PhoneVerificationService;
 import com.example.DreamBig.service.implementations.UserServiceImpl;
@@ -29,12 +29,12 @@ class UserServiceTest {
     @InjectMocks
     private UserServiceImpl userService;
 
-    private UserEntity user;
+    private User user;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        user = new UserEntity();
+        user = new User();
         user.setPhoneNumber("1234567890");
     }
 
@@ -43,9 +43,9 @@ class UserServiceTest {
 
         when(phoneVerificationService.verifyPhoneNumber("1234567890")).thenReturn(true);
 
-        when(userRepository.save(any(UserEntity.class))).thenReturn(user);
+        when(userRepository.save(any(User.class))).thenReturn(user);
 
-        UserEntity result = userService.createUser(user);
+        User result = userService.createUser(user);
 
         verify(phoneVerificationService).verifyPhoneNumber("1234567890");
 
@@ -56,9 +56,9 @@ class UserServiceTest {
     void testCreateUserWithInvalidPhoneNumber() throws Exception {
         when(phoneVerificationService.verifyPhoneNumber("1234567890")).thenReturn(false);
 
-        when(userRepository.save(any(UserEntity.class))).thenReturn(user);
+        when(userRepository.save(any(User.class))).thenReturn(user);
 
-        UserEntity result = userService.createUser(user);
+        User result = userService.createUser(user);
 
         verify(phoneVerificationService).verifyPhoneNumber("1234567890");
 
@@ -70,9 +70,9 @@ class UserServiceTest {
 
         when(phoneVerificationService.verifyPhoneNumber("1234567890")).thenThrow(new RuntimeException("API Error"));
 
-        when(userRepository.save(any(UserEntity.class))).thenReturn(user);
+        when(userRepository.save(any(User.class))).thenReturn(user);
 
-        UserEntity result = userService.createUser(user);
+        User result = userService.createUser(user);
 
         verify(phoneVerificationService).verifyPhoneNumber("1234567890");
 

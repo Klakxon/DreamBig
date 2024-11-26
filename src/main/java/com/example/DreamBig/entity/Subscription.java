@@ -1,13 +1,24 @@
-package com.example.DreamBig.model;
+package com.example.DreamBig.entity;
 
-/**
- * Абонемент
- */
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "subscriptions")
 public class Subscription {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String type;
+
     private boolean isActive;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    public Subscription() {}
 
     public Subscription(Long id, String type, boolean isActive, User user) {
         if (type == null || type.isEmpty()) {
@@ -60,3 +71,4 @@ public class Subscription {
         this.user = user;
     }
 }
+

@@ -1,6 +1,5 @@
 package com.example.dreambig;
 
-import com.example.DreamBig.service.interfaces.GreetingService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

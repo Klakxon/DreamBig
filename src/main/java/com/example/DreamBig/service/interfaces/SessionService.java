@@ -1,12 +1,12 @@
 package com.example.DreamBig.service.interfaces;
 
-import com.example.DreamBig.entity.SessionEntity;
+import com.example.DreamBig.entity.Session;
 import java.util.List;
 
 public interface SessionService {
-    SessionEntity createSession(SessionEntity session);
-    SessionEntity getSessionById(Long id);
-    List<SessionEntity> getAllSessions();
-    SessionEntity updateSession(SessionEntity session);
+    Session createSession(Session session);
+    Session getSessionById(Long id);
+    List<Session> getAllSessions();
+    Session updateSession(Session session);
     void deleteSession(Long id);
 }

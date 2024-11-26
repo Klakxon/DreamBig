@@ -1,6 +1,6 @@
 package com.example.DreamBig.security;
 
-import com.example.DreamBig.model.User;
+import com.example.DreamBig.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;

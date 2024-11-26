@@ -1,16 +1,14 @@
-package com.example.DreamBig.service.implementations;
+package com.example.DreamBig.userDetails;
 
-import com.example.DreamBig.model.User;
-import com.example.DreamBig.model.CustomUserDetails;
+import com.example.DreamBig.entity.User;
 import com.example.DreamBig.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import java.util.HashSet;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -24,8 +22,18 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(email)
+        System.out.println("Attempting to load user by email: " + email);
+
+        User userEntity = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
-        return new CustomUserDetails(user.getEmail(), user.getPassword(), user.getRole(), user.getPrivileges());
+
+        System.out.println("Found user: " + userEntity.getEmail() + ", password: " + userEntity.getPassword());
+
+        return new CustomUserDetails(
+                userEntity.getEmail(),
+                userEntity.getPassword(),
+                userEntity.getRole(),
+                new HashSet<>()
+        );
     }
 }

@@ -1,6 +1,6 @@
 package com.example.DreamBig.service.implementations;
 
-import com.example.DreamBig.entity.SubscriptionEntity;
+import com.example.DreamBig.entity.Subscription;
 import com.example.DreamBig.repository.SubscriptionRepository;
 import com.example.DreamBig.service.interfaces.SubscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,25 +19,25 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     @Override
     @Cacheable(value = "subscriptions", key = "#id")
-    public SubscriptionEntity getSubscriptionById(Long id) {
+    public Subscription getSubscriptionById(Long id) {
         return subscriptionRepository.findById(id).orElse(null);
     }
 
     @Override
     @Cacheable(value = "subscriptions", key = "'allSubscriptions'")
-    public List<SubscriptionEntity> getAllSubscriptions() {
+    public List<Subscription> getAllSubscriptions() {
         return subscriptionRepository.findAll();
     }
 
     @Override
     @CachePut(value = "subscriptions", key = "#subscription.id")
-    public SubscriptionEntity createSubscription(SubscriptionEntity subscription) {
+    public Subscription createSubscription(Subscription subscription) {
         return subscriptionRepository.save(subscription);
     }
 
     @Override
     @CachePut(value = "subscriptions", key = "#subscription.id")
-    public SubscriptionEntity updateSubscription(SubscriptionEntity subscription) {
+    public Subscription updateSubscription(Subscription subscription) {
         return subscriptionRepository.save(subscription);
     }
 

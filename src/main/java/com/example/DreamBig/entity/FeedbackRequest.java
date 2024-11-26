@@ -1,22 +1,29 @@
-package com.example.DreamBig.model;
+package com.example.DreamBig.entity;
 
 import com.example.DreamBig.service.implementations.ValidationServiceImpl;
 import com.example.DreamBig.service.interfaces.ValidationService;
+import jakarta.persistence.*;
 
-/**
- * Зворотний зв'язок
- */
+@Entity
+@Table(name = "feedback_requests")
 public class FeedbackRequest {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String phoneNumber;
+
     private String message;
+
     private String status;
 
-    private final ValidationService validationService;
+    @Transient
+    private final ValidationService validationService = new ValidationServiceImpl();;
+
+    public FeedbackRequest() {}
 
     public FeedbackRequest(Long id, String phoneNumber, String message, String status) {
-        this.validationService = new ValidationServiceImpl();
-
         if (phoneNumber == null || !validationService.isValidPhoneNumber(phoneNumber)) {
             throw new IllegalArgumentException("Invalid phone number format");
         }
@@ -32,6 +39,7 @@ public class FeedbackRequest {
         this.message = message;
         this.status = status;
     }
+
 
     public Long getId() {
         return id;

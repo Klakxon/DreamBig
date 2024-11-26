@@ -1,6 +1,6 @@
 package com.example.DreamBig.service.implementations;
 
-import com.example.DreamBig.entity.UserEntity;
+import com.example.DreamBig.entity.User;
 import com.example.DreamBig.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -23,14 +23,14 @@ public class LuckyUserNotificationService {
     }
 
     public void sendLuckyUserNotification() {
-        List<UserEntity> users = userRepository.findAll();
+        List<User> users = userRepository.findAll();
         if (users.isEmpty()) {
             System.out.println("Немає користувачів для вибору.");
             return;
         }
 
         Random random = new Random();
-        UserEntity luckyUser = users.get(random.nextInt(users.size()));
+        User luckyUser = users.get(random.nextInt(users.size()));
 
         sendEmail(luckyUser.getEmail());
     }

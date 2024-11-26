@@ -1,12 +1,12 @@
 package com.example.DreamBig.service.interfaces;
 
-import com.example.DreamBig.entity.SubscriptionEntity;
+import com.example.DreamBig.entity.Subscription;
 import java.util.List;
 
 public interface SubscriptionService {
-    SubscriptionEntity createSubscription(SubscriptionEntity subscription);
-    SubscriptionEntity getSubscriptionById(Long id);
-    List<SubscriptionEntity> getAllSubscriptions();
-    SubscriptionEntity updateSubscription(SubscriptionEntity subscription);
+    Subscription createSubscription(Subscription subscription);
+    Subscription getSubscriptionById(Long id);
+    List<Subscription> getAllSubscriptions();
+    Subscription updateSubscription(Subscription subscription);
     void deleteSubscription(Long id);
 }

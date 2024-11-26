@@ -1,6 +1,6 @@
 package com.example.DreamBig.service.implementations;
 
-import com.example.DreamBig.model.User;
+import com.example.DreamBig.entity.User;
 import com.example.DreamBig.service.interfaces.ValidationService;
 import org.springframework.stereotype.Component;
 
