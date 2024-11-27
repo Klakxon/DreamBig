@@ -25,6 +25,10 @@
     <div class="container">
         <h1>User Profile</h1>
 
+        <div th:if="${successMessage}" class="success-message">
+            <p th:text="${successMessage}"></p>
+        </div>
+
         <div class="profile-info">
             <p><b>Email: </b><span th:text="${email}">default email</span></p>
             <p><b>Full Name: </b><span th:text="${fullName}">default full name</span></p>

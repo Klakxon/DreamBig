@@ -40,7 +40,8 @@ public class SecurityConfig {
                         .frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/register", "/css/**", "/images/**", "/h2-console/**", "/home/**", "/profile/**").permitAll()
+                        .requestMatchers("/login", "/register", "/css/**", "/images/**", "/h2-console/**", "/home/**").permitAll()
+                        .requestMatchers("/profile/**").authenticated()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
@@ -49,7 +50,7 @@ public class SecurityConfig {
                         .loginProcessingUrl("/login")
                         .usernameParameter("email")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/home", true)
+                        .defaultSuccessUrl("/home")
                         .failureUrl("/login?error=true")
                         .permitAll()
                 )

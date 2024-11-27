@@ -1,9 +1,17 @@
 package com.example.DreamBig.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "payments")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Payment {
 
     @Id
@@ -20,80 +28,6 @@ public class Payment {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    public Payment() {}
-
-    public Payment(Long id, Double amount, String status, User user, String date) {
-        if (amount == null || amount <= 0) {
-            throw new IllegalArgumentException("Amount must be positive");
-        }
-        if (status == null || status.isEmpty()) {
-            throw new IllegalArgumentException("Status cannot be empty");
-        }
-        if (user == null) {
-            throw new IllegalArgumentException("User cannot be null");
-        }
-        if (date == null || date.isEmpty()) {
-            throw new IllegalArgumentException("Date cannot be empty");
-        }
-
-        this.id = id;
-        this.amount = amount;
-        this.status = status;
-        this.user = user;
-        this.date = date;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Double amount) {
-        if (amount == null || amount <= 0) {
-            throw new IllegalArgumentException("Amount must be positive");
-        }
-        this.amount = amount;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        if (status == null || status.isEmpty()) {
-            throw new IllegalArgumentException("Status cannot be empty");
-        }
-        this.status = status;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        if (date == null || date.isEmpty()) {
-            throw new IllegalArgumentException("Date cannot be empty");
-        }
-        this.date = date;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        if (user == null) {
-            throw new IllegalArgumentException("User cannot be null");
-        }
-        this.user = user;
-    }
 
     public void markAsCompleted() {
         this.status = "Completed";

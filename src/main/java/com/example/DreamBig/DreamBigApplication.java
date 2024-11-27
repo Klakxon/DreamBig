@@ -33,8 +33,9 @@ public class DreamBigApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) {
 		if (userRepository.count() == 0) {
-			createDefaultUser(1L, "adminPassword", "ADMIN", "Administrator", "+380123456789", "admin@example.com");
-			createDefaultUser(2L, "userPassword", "USER", "John Doe", "+380987654321", "user@example.com");
+			createDefaultUser(1L, "admin", "ADMIN", "Administrator", "+380123456789", "admin@example.com");
+			createDefaultUser(2L, "user", "USER", "John Doe", "+380987654321", "user@example.com");
+			createDefaultUser(3L, "trainer", "TRAINER", "Andrew Koko", "+380961857329", "trainer@example.com");
 
 			System.out.println("Default users created");
 		}
