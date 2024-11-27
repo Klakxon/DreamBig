@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="uk-UA">
 <head>
     <title>User Profile</title>
     <link rel="stylesheet" type="text/css" href="/css/profile.css">
@@ -23,25 +23,25 @@
 
 <div class="background-image">
     <div class="container">
-        <h1>User Profile</h1>
+        <h1>Профіль користувача</h1>
 
         <div th:if="${successMessage}" class="success-message">
-            <p th:text="${successMessage}"></p>
+            <p th:text="${successMessage}" style="color:green"></p>
         </div>
 
         <div class="profile-info">
-            <p><b>Email: </b><span th:text="${email}">default email</span></p>
-            <p><b>Full Name: </b><span th:text="${fullName}">default full name</span></p>
+            <p><b>Пошта: </b><span th:text="${email}">default email</span></p>
+            <p><b>ПІБ: </b><span th:text="${fullName}">default full name</span></p>
         </div>
 
         <form th:action="@{/profile/update}" method="post">
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" placeholder="Enter email" th:value="${email}"/><br><br>
+            <label for="email">Пошта:</label>
+            <input type="text" id="email" name="email" placeholder="Ввести пошту" th:value="${email}"/><br><br>
 
-            <label for="fullName">Full Name:</label>
-            <input type="text" id="fullName" name="fullName" placeholder="Enter full name" th:value="${fullName}"/><br><br>
+            <label for="fullName">ПІБ користувача:</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Ввести ПІБ" th:value="${fullName}"/><br><br>
 
-            <button type="submit">Update Profile</button>
+            <button type="submit">Оновити дані</button>
         </form>
     </div>
 </div>

@@ -30,7 +30,7 @@ public class ProfileController {
     public String profile(@AuthenticationPrincipal UserDetails currentUser, Model model) {
         String email = currentUser.getUsername();
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Користувача не знайдено"));
 
         model.addAttribute("email", user.getEmail());
         model.addAttribute("fullName", user.getFullName());
@@ -44,12 +44,12 @@ public class ProfileController {
                                 @AuthenticationPrincipal UserDetails currentUser) {
 
         if (!validationService.isValidEmail(email) || fullName == null || fullName.isEmpty()) {
-            model.addAttribute("error", "Invalid data provided");
+            model.addAttribute("error", "Некоректні дані");
             return PROFILE_PAGE;
         }
 
         User user = userRepository.findByEmail(currentUser.getUsername())
-                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Користувача не знайдено"));
 
         user.setEmail(email);
         user.setFullName(fullName);
@@ -57,7 +57,7 @@ public class ProfileController {
 
         model.addAttribute("email", user.getEmail());
         model.addAttribute("fullName", user.getFullName());
-        model.addAttribute("successMessage", "Profile updated successfully!");
+        model.addAttribute("successMessage", "Профіль успішно оновлено!");
         return PROFILE_PAGE;
     }
 }

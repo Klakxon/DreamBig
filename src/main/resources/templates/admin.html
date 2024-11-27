@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="uk-UA">
 <head>
   <title>Admin Page</title>
   <link rel="stylesheet" href="/css/style.css">
@@ -10,22 +10,14 @@
     <img src="/images/dreambig_logo.png" alt="DreamBig Logo">
   </div>
   <div class="profile-info">
-    <span th:text="${#authentication.principal.username}">User</span>
-    <a href="/profile" class="profile-link">Profile</a>
-    <a href="/logout" class="logout-link">Logout</a>
+    <span th:text="${username}">Користувач</span>
+    <a href="/profile" class="profile-link">Профіль</a>
+    <a href="/logout" class="logout-link">Вихід</a>
   </div>
 </header>
 
 <main class="content">
-  <h1>Admin Dashboard</h1>
-
-  <div th:if="${#authorization.expression('hasRole(\'ADMIN\')')}">
-    <p>This section is visible only to Admins.</p>
-  </div>
-
-  <div th:if="${#authorization.expression('hasRole(\'TRAINER\')')}">
-    <p>This section is visible only to Trainers.</p>
-  </div>
+  <h1>Панель адміністратора</h1>
 </main>
 </body>
 </html>

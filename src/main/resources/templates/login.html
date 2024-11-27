@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="uk-UA">
 <head>
   <title>Login</title>
   <link rel="stylesheet" th:href="@{/css/style.css}" />
@@ -22,7 +22,13 @@
 
     <div class="form-group">
       <label for="password">Пароль</label>
-      <input type="password" id="password" name="password" placeholder="Введіть пароль" required>
+      <div style="position: relative;">
+        <input type="password" id="password" name="password" placeholder="Введіть пароль" required>
+        <button type="button" onclick="togglePasswordVisibility()"
+                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
+          👁️
+        </button>
+      </div>
     </div>
 
     <div class="form-group">
@@ -32,6 +38,25 @@
   <div th:if="${param.error}" class="error-message">
     Невірна пошта чи пароль!
   </div>
+  <div th:if="${message}" class="success-message">
+    <p th:text="${message}"></p>
+  </div>
 </div>
+
+<script>
+  function togglePasswordVisibility() {
+    let passwordField = document.getElementById("password");
+    let toggleButton = event.currentTarget;
+
+    if (passwordField.type === "password") {
+      passwordField.type = "text";
+      toggleButton.textContent = "🙈";
+    } else {
+      passwordField.type = "password";
+      toggleButton.textContent = "👁️";
+    }
+  }
+</script>
+
 </body>
 </html>
