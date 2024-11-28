@@ -9,35 +9,35 @@
 <!-- Шапка -->
 <div th:replace="~{fragments/header :: site-header}"></div>
 
-<div class="login-container">
-  <h2>Увійти в систему</h2>
-
-  <form th:action="@{/login}" method="post" class="login-form">
-    <div class="form-group">
-      <label for="email">Електронна пошта</label>
-      <input type="email" id="email" name="email" placeholder="Введіть електронну пошту" required>
-    </div>
-
-    <div class="form-group">
-      <label for="password">Пароль</label>
-      <div style="position: relative;">
-        <input type="password" id="password" name="password" placeholder="Введіть пароль" required>
-        <button type="button" onclick="togglePasswordVisibility()"
-                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
-          👁️
-        </button>
+<!-- Основний контент -->
+<div class="content">
+  <div class="login-container">
+    <h2>Увійти в систему</h2>
+    <form th:action="@{/login}" method="post" class="login-form">
+      <div class="form-group">
+        <label for="email">Електронна пошта</label>
+        <input type="email" id="email" name="email" placeholder="Введіть електронну пошту" required>
       </div>
+      <div class="form-group">
+        <label for="password">Пароль</label>
+        <div style="position: relative;">
+          <input type="password" id="password" name="password" placeholder="Введіть пароль" required>
+          <button type="button" onclick="togglePasswordVisibility()"
+                  style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
+            👁️
+          </button>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="login-button">Увійти</button>
+      </div>
+    </form>
+    <div th:if="${param.error}" class="error-message">
+      Невірна пошта чи пароль!
     </div>
-
-    <div class="form-group">
-      <button type="submit" class="login-button">Увійти</button>
+    <div th:if="${message}" class="success-message">
+      <p th:text="${message}"></p>
     </div>
-  </form>
-  <div th:if="${param.error}" class="error-message">
-    Невірна пошта чи пароль!
-  </div>
-  <div th:if="${message}" class="success-message">
-    <p th:text="${message}"></p>
   </div>
 </div>
 

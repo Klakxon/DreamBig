@@ -243,6 +243,12 @@ public class DreamBigApplication implements CommandLineRunner {
 		user.setFullName(fullName);
 		user.setPhoneNumberValid(true);
 
-		userRepository.save(user);
+
+		if (role.equals("TRAINER")) {
+			Trainer trainer = new Trainer(user);
+			trainerRepository.save(trainer);
+		} else {
+			userRepository.save(user);
+		}
 	}
 }

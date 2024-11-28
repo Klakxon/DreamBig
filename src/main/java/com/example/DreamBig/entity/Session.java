@@ -25,7 +25,7 @@ public class Session {
 
     private Date dateTime;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "trainer_id", nullable = false)
     private Trainer trainer;
 

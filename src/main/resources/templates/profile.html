@@ -53,38 +53,38 @@
         </form>
 
 
-        <!-- Розділ підписок -->
-        <div>
-            <h2 class="section-title">Підписки</h2>
-            <ul class="item-list">
-                <li th:each="sub : ${subscriptions}">
-                    <span th:text="${sub.type}">Тип підписки</span> - <span th:text="${sub.isActive ? 'Активна' : 'Неактивна'}"></span>
-                </li>
-            </ul>
-        </div>
+<!--        &lt;!&ndash; Розділ підписок &ndash;&gt;-->
+<!--        <div>-->
+<!--            <h2 class="section-title">Підписки</h2>-->
+<!--            <ul class="item-list">-->
+<!--                <li th:each="sub : ${subscriptions}">-->
+<!--                    <span th:text="${sub.type}">Тип підписки</span> - <span th:text="${sub.isActive ? 'Активна' : 'Неактивна'}"></span>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
 
-        <!-- Розділ оплат -->
-        <div>
-            <h2 class="section-title">Останні оплати</h2>
-            <ul class="item-list">
-                <li th:each="payment : ${payments}">
-                    <span th:text="${payment.date}">Дата</span>:
-                    <span th:text="${payment.amount}">Сума</span> -
-                    <span th:text="${payment.status}">Статус</span>
-                </li>
-            </ul>
-        </div>
+<!--        &lt;!&ndash; Розділ оплат &ndash;&gt;-->
+<!--        <div>-->
+<!--            <h2 class="section-title">Останні оплати</h2>-->
+<!--            <ul class="item-list">-->
+<!--                <li th:each="payment : ${payments}">-->
+<!--                    <span th:text="${payment.date}">Дата</span>:-->
+<!--                    <span th:text="${payment.amount}">Сума</span> - -->
+<!--                    <span th:text="${payment.status}">Статус</span>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
 
-        <!-- Розділ занять -->
-        <div>
-            <h2 class="section-title">Заняття</h2>
-            <ul class="item-list">
-                <li th:each="session : ${sessions}">
-                    <span th:text="${session.sessionType}">Тип заняття</span> -
-                    <span th:text="${session.dateTime}">Дата і час</span>
-                </li>
-            </ul>
-        </div>
+<!--        &lt;!&ndash; Розділ занять &ndash;&gt;-->
+<!--        <div>-->
+<!--            <h2 class="section-title">Заняття</h2>-->
+<!--            <ul class="item-list">-->
+<!--                <li th:each="session : ${sessions}">-->
+<!--                    <span th:text="${session.sessionType}">Тип заняття</span> - -->
+<!--                    <span th:text="${session.dateTime}">Дата і час</span>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
     </div>
 </div>
 
