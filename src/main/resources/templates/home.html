@@ -1,69 +1,77 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="uk-UA">
 <head>
     <title>DreamBig - Спортивні клуби</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="icon" href="/dreambig_logo.png"/>
 </head>
 <body>
+<!-- Шапка -->
+<div th:replace="~{fragments/header :: site-header}"></div>
 
-<header>
-    <div class="logo">
-        <img src="images/dreambig_logo.png" alt="DreamBig Logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a th:href="@{/home}">Головна</a></li>
-            <li><a th:href="@{/profile}">Профіль</a></li>
-            <li><a th:href="@{/admin}">Адмін</a></li>
-            <li><a th:href="@{/services}">Послуги</a></li>
-            <li><a th:href="@{/contact}">Контакти</a></li>
-        </ul>
-    </nav>
-</header>
-
+<!-- Банер -->
 <section class="hero">
     <h1>Ласкаво просимо до DreamBig!</h1>
     <p>Займайтеся спортом у сучасних клубах для досягнення вашої мети.</p>
-    <a href="/services" class="button">Наші послуги</a>
+    <a th:href="@{/service}" class="button">Наші послуги</a>
 </section>
 
-<section class="services">
-    <h2>Наші послуги</h2>
-    <div class="service-list">
-        <div class="service-item">
-            <img src="images/gym.jpg" alt="Тренажерний зал">
-            <h3>Тренажерний зал</h3>
-            <p>Сучасне обладнання для всіх рівнів підготовки.</p>
+<!-- Переваги клубу -->
+<section class="advantages">
+    <h2>Переваги наших клубів</h2>
+    <hr class="section-divider">
+    <div class="advantages-list">
+        <div class="advantage-item">
+            <img src="images/pool.jpg" alt="Басейн">
+            <p>Басейн на 6 доріжок по 25 метрів</p>
         </div>
-        <div class="service-item">
-            <img src="images/fitness.jpg" alt="Фітнес-класи">
-            <h3>Фітнес-класи</h3>
-            <p>Йога, аеробіка, пілатес та інше для будь-якого рівня.</p>
+        <div class="advantage-item">
+            <img src="images/spa.jpeg" alt="Спа-салон">
+            <p>Спа-салони з сучасними послугами</p>
         </div>
-        <div class="service-item">
-            <img src="images/training.jpg" alt="Персональні тренування">
-            <h3>Персональні тренування</h3>
-            <p>Програми з професійним тренером.</p>
+        <div class="advantage-item">
+            <img src="images/gym_tools.jpg" alt="Тренажери">
+            <p>Понад 500 видів тренажерів</p>
+        </div>
+        <div class="advantage-item">
+            <img src="images/fitness_hall.jpg" alt="Фітнес-зали">
+            <p>Сучасні фітнес-зали для групових занять</p>
         </div>
     </div>
 </section>
 
+<!-- Абонементи -->
+<section class="subscriptions">
+    <h2>Варіанти абонементів</h2>
+    <div class="subscription-list">
+        <div class="subscription-item">
+            <h3>Разовий</h3>
+            <p>200 грн</p>
+        </div>
+        <div class="subscription-item">
+            <h3>Місячний</h3>
+            <p>1000 грн</p>
+        </div>
+        <div class="subscription-item">
+            <h3>Річний</h3>
+            <p>10000 грн</p>
+        </div>
+    </div>
+    <a th:href="@{/home}" class="button">Оформити абонемент</a>
+</section>
+
+<!-- Контакти -->
 <section class="contact-info">
     <h2>Наші клуби</h2>
     <p>Відвідайте нас за адресою:</p>
     <p>м. Київ, вул. Спортивна, 10</p>
-    <p>Телефон: +380 (44) 123-45-67</p>
-    <p>Email: info@dreambig.com</p>
+    <p>м. Київ, вул. Олімпійська, 42Б</p>
+    <p>Телефон: <a href="tel:+380441234567">+380 (44) 123-45-67</a></p>
+    <p>Email: <a href="mailto:info@dreambig.com">info@dreambig.com</a></p>
 </section>
 
-<footer>
-    <div class="social-media">
-        <a href="https://facebook.com/DreamBig" target="_blank">Facebook</a> |
-        <a href="https://instagram.com/DreamBig" target="_blank">Instagram</a> |
-        <a href="https://twitter.com/DreamBig" target="_blank">Twitter</a>
-    </div>
-    <p>&copy; 2023 DreamBig Спортивні клуби. Усі права захищено.</p>
-</footer>
+<!-- Футер -->
+<div th:replace="~{fragments/footer :: site-footer}"></div>
 
 </body>
 </html>

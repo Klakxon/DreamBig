@@ -88,12 +88,23 @@ h1 {
     border-radius: 5px;
 }
 
+/* Шапка */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     background-color: #333;
     color: white;
     padding: 10px 20px;
+}
+
+header .logo {
+    margin-right: 30px;
 }
 
 header .logo img {
@@ -116,6 +127,16 @@ header nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+}
+
+header nav ul li a.active {
+    font-weight: bold;
+    color: #1a73e8;
+}
+
+
+header nav ul li a:hover {
+    text-decoration: underline;
 }
 
 body {
@@ -186,3 +207,25 @@ form button {
 form button:hover {
     background-color: #0069c0;
 }
+
+/* Футер */
+footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #1a73e8;
+    color: white;
+    text-align: center;
+}
+
+.social-media a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.social-media a:hover {
+    text-decoration: underline;
+}
+

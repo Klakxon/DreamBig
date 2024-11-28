@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="uk-UA">
 <head>
-  <title>Admin Page</title>
+  <title>DreamBig - Панель адміністратора</title>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/dreambig_logo.png"/>
 </head>
 <body>
-<header class="header">
-  <div class="logo">
-    <img src="/images/dreambig_logo.png" alt="DreamBig Logo">
-  </div>
-  <div class="profile-info">
-    <span th:text="${username}">Користувач</span>
-    <a href="/profile" class="profile-link">Профіль</a>
-    <a href="/logout" class="logout-link">Вихід</a>
-  </div>
-</header>
+<!-- Шапка -->
+<div th:replace="~{fragments/header :: site-header}"></div>
 
 <main class="content">
   <h1>Панель адміністратора</h1>
 </main>
+
+<!-- Футер -->
+<div th:replace="~{fragments/footer :: site-footer}"></div>
 </body>
 </html>

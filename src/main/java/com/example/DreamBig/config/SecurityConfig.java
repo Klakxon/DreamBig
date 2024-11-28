@@ -1,5 +1,7 @@
 package com.example.DreamBig.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,6 +20,8 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private static final String LOGIN_PAGE= "/login";
+    private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -26,13 +30,25 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        logger.debug("Configuring SecurityFilterChain");
+
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .headers(headers -> headers
                         .frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(LOGIN_PAGE, "/register", "/css/**", "/images/**", "/h2-console/**", "/home/**", "/error/**").permitAll()
+                        .requestMatchers(LOGIN_PAGE).permitAll()
+                        .requestMatchers("/css/**").permitAll()
+                        .requestMatchers("/images/**").permitAll()
+                        .requestMatchers("/static/**").permitAll()
+                        .requestMatchers("/h2-console/**").permitAll()
+                        .requestMatchers("/register").permitAll()
+                        .requestMatchers("/home/**").permitAll()
+                        .requestMatchers("/service", "/service/**").permitAll()
+                        .requestMatchers("/contact", "/contact/**").permitAll()
+                        .requestMatchers("/error/**").permitAll()
+                        .requestMatchers("/").permitAll()
                         .requestMatchers("/profile/**").authenticated()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .anyRequest().authenticated()
@@ -55,6 +71,8 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED));
+
+        logger.debug("SecurityFilterChain configured");
 
         return http.build();
     }

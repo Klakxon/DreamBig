@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="uk-UA">
+<head>
+    <title>DreamBig - Послуги</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="icon" href="/dreambig_logo.png"/>
+</head>
+<body>
+<!-- Шапка -->
+<div th:replace="~{fragments/header :: site-header}"></div>
+
+<!-- Послуги -->
+<section class="services">
+    <h2>Наші послуги</h2>
+    <div class="service-list">
+        <div class="service-item">
+            <img src="images/gym.jpg" alt="Тренажерний зал">
+            <h3>Тренажерний зал</h3>
+            <p>Сучасне обладнання для всіх рівнів підготовки.</p>
+        </div>
+        <div class="service-item">
+            <img src="images/fitness.jpg" alt="Фітнес-класи">
+            <h3>Фітнес-класи</h3>
+            <p>Йога, аеробіка, пілатес та інше для будь-якого рівня.</p>
+        </div>
+        <div class="service-item">
+            <img src="images/training.jpg" alt="Персональні тренування">
+            <h3>Персональні тренування</h3>
+            <p>Програми з професійним тренером.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Футер -->
+<div th:replace="~{fragments/footer :: site-footer}"></div>
+</body>
+</html>

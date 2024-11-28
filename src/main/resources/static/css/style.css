@@ -1,17 +1,32 @@
+/* Основні стилі */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     color: #333;
     margin: 0;
-    padding: 0;
+    padding-top: 70px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Шапка */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     background-color: #333;
     color: white;
     padding: 10px 20px;
+}
+
+header .logo {
+    margin-right: 30px;
 }
 
 header .logo img {
@@ -36,6 +51,17 @@ header nav ul li a {
     font-weight: bold;
 }
 
+header nav ul li a.active {
+    font-weight: bold;
+    color: #1a73e8;
+}
+
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Секція hero */
 .hero {
     text-align: center;
     padding: 50px;
@@ -64,38 +90,82 @@ header nav ul li a {
     margin-top: 20px;
 }
 
-.services {
+.hero .button:hover {
+    background-color: #1a73e8;
+    color: white;
+}
+
+/* Секція переваг */
+.advantages {
     padding: 40px;
+    background-color: #fff;
     text-align: center;
 }
 
-.service-list {
+.advantages h2 {
+    margin-bottom: 20px;
+    color: #1a73e8;
+}
+
+.advantages ul {
+    list-style: none;
+    padding: 0;
+}
+
+.advantages li {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+/* Секція абонементів */
+.subscriptions {
+    padding: 40px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.subscription-list {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     gap: 20px;
 }
 
-.service-item {
-    width: 30%;
+.subscription-item {
     background-color: #fff;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    width: 200px;
     text-align: center;
 }
 
-.service-item img {
-    width: 100%;
-    border-radius: 8px;
+.subscription-item h3 {
     margin-bottom: 10px;
+    color: #1a73e8;
 }
 
-.services .service-list .service-item img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
+.subscription-item p {
+    font-size: 20px;
+    font-weight: bold;
 }
 
+.subscriptions .button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: white;
+    background-color: #1a73e8;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.subscriptions .button:hover {
+    background-color: #333;
+}
+
+/* Контактна інформація */
 .contact-info {
     background-color: #333;
     color: white;
@@ -103,7 +173,20 @@ header nav ul li a {
     text-align: center;
 }
 
+.contact-info a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Футер */
 footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
     padding: 10px;
     background-color: #1a73e8;
     color: white;
@@ -116,13 +199,62 @@ footer {
     margin: 0 10px;
 }
 
-.profile-header {
-    text-align: center;
-    padding: 1em;
-    background-color: #1a73e8;
-    color: white;
+.social-media a:hover {
+    text-decoration: underline;
 }
 
+/* Оформлення заголовка секції та роздільної лінії */
+.advantages h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.section-divider {
+    width: 60px;
+    height: 3px;
+    background-color: #1a73e8;
+    border: none;
+    margin: 0 auto 30px;
+}
+
+/* Оформлення контейнера для переваг */
+.advantages-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Оформлення кожної переваги */
+.advantage-item {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.advantage-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.advantage-item p {
+    font-size: 1.1em;
+    color: #333;
+    padding: 15px;
+    margin: 0;
+}
+
+/* Ефект при наведенні */
+.advantage-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Авторизація */
 .login-container {
     max-width: 400px;
     margin: 5% auto;
@@ -174,4 +306,59 @@ footer {
     text-align: center;
     font-weight: bold;
     margin-top: 20px;
+}
+
+/* Секція послуг */
+.services {
+    padding: 40px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.services h2 {
+    margin-bottom: 20px;
+    color: #1a73e8;
+}
+
+.service-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.service-item {
+    flex: 1;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.service-item img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.service-item h3 {
+    color: #333;
+    margin: 15px 0 10px;
+}
+
+.service-item p {
+    color: #666;
+    font-size: 16px;
+}
+
+/* Ефект при наведенні */
+.service-item:hover {
+    transform: translateY(-5px);
+}
+
+main {
+    flex: 1;
+    padding-top: 70px;
 }

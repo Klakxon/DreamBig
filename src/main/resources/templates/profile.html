@@ -1,25 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="uk-UA">
 <head>
-    <title>User Profile</title>
+    <title>DreamBig - Профіль</title>
     <link rel="stylesheet" type="text/css" href="/css/profile.css">
+    <link rel="icon" href="/dreambig_logo.png"/>
 </head>
 <body>
-
-<header>
-    <div class="logo">
-        <img src="/images/dreambig_logo.png" alt="DreamBig Logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a th:href="@{/home}">Головна</a></li>
-            <li><a th:href="@{/profile}">Профіль</a></li>
-            <li><a th:href="@{/admin}">Адмін</a></li>
-            <li><a th:href="@{/services}">Послуги</a></li>
-            <li><a th:href="@{/contact}">Контакти</a></li>
-        </ul>
-    </nav>
-</header>
+<!-- Шапка -->
+<div th:replace="~{fragments/header :: site-header}"></div>
 
 <div class="background-image">
     <div class="container">
@@ -46,5 +34,7 @@
     </div>
 </div>
 
+<!-- Футер -->
+<div th:replace="~{fragments/footer :: site-footer}"></div>
 </body>
 </html>

@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="uk-UA">
 <head>
-  <title>Login</title>
-  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <title>DreamBig - Login</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" href="/dreambig_logo.png"/>
 </head>
 <body>
-<header>
-  <div class="profile-header">
-    <h1>DreamBig - Авторизація</h1>
-  </div>
-</header>
+<!-- Шапка -->
+<div th:replace="~{fragments/header :: site-header}"></div>
 
 <div class="login-container">
   <h2>Увійти в систему</h2>
@@ -42,6 +40,9 @@
     <p th:text="${message}"></p>
   </div>
 </div>
+
+<!-- Футер -->
+<div th:replace="~{fragments/footer :: site-footer}"></div>
 
 <script>
   function togglePasswordVisibility() {
