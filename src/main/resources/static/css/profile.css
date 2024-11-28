@@ -4,6 +4,9 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
@@ -37,9 +40,34 @@ h1 {
 form {
     display: flex;
     flex-direction: column;
-    gap: 0px;
+    gap: 15px;
     width: 100%;
     padding: 0 20px;
+    align-items: flex-start;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;  /* Розташовує label і input на одній лінії */
+    width: 100%;
+    align-items: center;  /* Вирівнює label і input по вертикалі */
+}
+
+form label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 20px;  /* Відстань між label та input */
+    width: 30%;  /* Фіксована ширина для label */
+    text-align: left;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 65%;  /* Ширина input відносно контейнера */
 }
 
 label {
@@ -78,6 +106,8 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1;
+    padding: 100px 20px 20px;
 }
 
 h1 {
@@ -154,7 +184,7 @@ body {
 
 .container {
     max-width: 900px;
-    margin: 0 auto;
+    margin: 100px auto 30px;
     padding: 20px;
     background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -173,10 +203,6 @@ h1 {
 .profile-info p {
     font-size: 18px;
     margin: 5px 0;
-}
-
-form {
-    text-align: center;
 }
 
 form label {

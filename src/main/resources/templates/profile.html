@@ -16,25 +16,90 @@
         <div th:if="${successMessage}" class="success-message">
             <p th:text="${successMessage}" style="color:green"></p>
         </div>
-
-        <div class="profile-info">
-            <p><b>Пошта: </b><span th:text="${email}">default email</span></p>
-            <p><b>ПІБ: </b><span th:text="${fullName}">default full name</span></p>
+        <div th:if="${error}" class="error-message">
+            <p th:text="${error}" style="color:red"></p>
         </div>
 
-        <form th:action="@{/profile/update}" method="post">
-            <label for="email">Пошта:</label>
-            <input type="text" id="email" name="email" placeholder="Ввести пошту" th:value="${email}"/><br><br>
+        <div class="profile-info">
+            <p><b>Пошта: </b><span th:text="${email}">пошта</span></p>
+            <p><b>ПІБ: </b><span th:text="${fullName}">ПІБ</span></p>
+            <p><b>Телефон: </b><span th:text="${phoneNumber}">телефон</span></p>
+        </div>
 
-            <label for="fullName">ПІБ користувача:</label>
-            <input type="text" id="fullName" name="fullName" placeholder="Ввести ПІБ" th:value="${fullName}"/><br><br>
+        <label>Редагувати профіль</label>
+        <form th:action="@{/profile/update}" method="post">
+            <div class="form-group">
+                <label for="email">Пошта:</label>
+                <input type="text" id="email" name="email" placeholder="Ввести пошту" th:value="${email}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="fullName">ПІБ:</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Ввести ПІБ" th:value="${fullName}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Телефон:</label>
+                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Ввести телефон" th:value="${phoneNumber}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password"/>
+                <span class="toggle-password" onclick="togglePassword()">👁️</span>
+            </div>
 
             <button type="submit">Оновити дані</button>
         </form>
+
+
+        <!-- Розділ підписок -->
+        <div>
+            <h2 class="section-title">Підписки</h2>
+            <ul class="item-list">
+                <li th:each="sub : ${subscriptions}">
+                    <span th:text="${sub.type}">Тип підписки</span> - <span th:text="${sub.isActive ? 'Активна' : 'Неактивна'}"></span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Розділ оплат -->
+        <div>
+            <h2 class="section-title">Останні оплати</h2>
+            <ul class="item-list">
+                <li th:each="payment : ${payments}">
+                    <span th:text="${payment.date}">Дата</span>:
+                    <span th:text="${payment.amount}">Сума</span> -
+                    <span th:text="${payment.status}">Статус</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Розділ занять -->
+        <div>
+            <h2 class="section-title">Заняття</h2>
+            <ul class="item-list">
+                <li th:each="session : ${sessions}">
+                    <span th:text="${session.sessionType}">Тип заняття</span> -
+                    <span th:text="${session.dateTime}">Дата і час</span>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 
 <!-- Футер -->
 <div th:replace="~{fragments/footer :: site-footer}"></div>
+
+<script>
+    function togglePassword() {
+        const passwordField = document.getElementById('password');
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+        } else {
+            passwordField.type = 'password';
+        }
+    }
+</script>
 </body>
 </html>

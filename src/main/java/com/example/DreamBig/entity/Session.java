@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -22,7 +23,7 @@ public class Session {
 
     private String sessionType;
 
-    private String dateTime;
+    private Date dateTime;
 
     @ManyToOne
     @JoinColumn(name = "trainer_id", nullable = false)

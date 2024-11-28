@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "payments")
 @Getter
@@ -20,9 +22,9 @@ public class Payment {
 
     private Double amount;
 
-    private String status;
+    private String status = "Pending";
 
-    private String date;
+    private Date date;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

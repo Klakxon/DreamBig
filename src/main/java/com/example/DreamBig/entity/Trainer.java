@@ -22,4 +22,8 @@ public class Trainer extends User {
     @ManyToOne
     @JoinColumn(name = "club_id")
     private Club club;
+
+    public Trainer(User user) {
+        super();
+    }
 }
